@@ -395,18 +395,18 @@
             }
         }
 
-        /* Overlay remains for mobile / focus */
+        /* Premium Navigation Overlay */
         .nav-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.98);
-            backdrop-filter: blur(15px);
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
             z-index: 2001;
             display: none;
             justify-content: center;
             align-items: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-overlay.active {
@@ -414,17 +414,37 @@
             opacity: 1;
         }
 
+        .nav-menu-container {
+            width: 90%;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .nav-menu-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .nav-menu-header h2 {
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
         .nav-menu-list {
             list-style: none;
-            text-align: center;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .nav-menu-item {
-            margin: 1.5rem 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             opacity: 0;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-overlay.active .nav-menu-item {
@@ -433,17 +453,71 @@
         }
 
         .nav-menu-link {
-            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: var(--text-main);
             text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: 800;
-            transition: color 0.3s;
-            display: block;
-            padding: 0.5rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 1.2rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            text-align: right;
+        }
+
+        .nav-menu-link .icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 12px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .nav-menu-link:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateX(-10px);
         }
 
         .nav-menu-link.current {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0.05));
+            border-color: var(--primary);
             color: var(--primary);
+        }
+
+        .close-menu-wrapper {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        #closeMenu {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        #closeMenu:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            .nav-menu-link {
+                font-size: 1rem;
+                padding: 1rem;
+            }
         }
 
         @media print {
@@ -1055,23 +1129,34 @@
     </div>
 
     <div class="nav-overlay" id="navOverlay">
-        <ul class="nav-menu-list">
-            <li class="nav-menu-item" style="transition-delay: 0.1s;">
-                <a href="index.html" class="nav-menu-link">Introduction to Information Retrieval</a>
-            </li>
-            <li class="nav-menu-item" style="transition-delay: 0.2s;">
-                <a href="text-retrieval.html" class="nav-menu-link current">Text retrieval, and text retrieval
-                    problem</a>
-            </li>
-            <li class="nav-menu-item" style="transition-delay: 0.3s;">
-                <a href="boolean-retrieval.html" class="nav-menu-link">Boolean Retrieval and Extended Boolean Retrieval
-                    Model</a>
-            </li>
-            <li class="nav-menu-item" style="transition-delay: 0.4s;">
-                <a href="#" class="nav-menu-link" id="closeMenu" style="font-size: 1rem; color: #94a3b8;">إغلاق القائمة
-                    ✕</a>
-            </li>
-        </ul>
+        <div class="nav-menu-container">
+            <div class="nav-menu-header">
+                <h2>فهرس المادة</h2>
+            </div>
+            <ul class="nav-menu-list">
+                <li class="nav-menu-item" style="transition-delay: 0.1s;">
+                    <a href="index.html" class="nav-menu-link">
+                        <span class="icon">🏠</span>
+                        Introduction to Information Retrieval
+                    </a>
+                </li>
+                <li class="nav-menu-item" style="transition-delay: 0.2s;">
+                    <a href="text-retrieval.html" class="nav-menu-link current">
+                        <span class="icon">📝</span>
+                        Text retrieval, and text retrieval problem
+                    </a>
+                </li>
+                <li class="nav-menu-item" style="transition-delay: 0.3s;">
+                    <a href="boolean-retrieval.html" class="nav-menu-link">
+                        <span class="icon">🔍</span>
+                        Boolean Retrieval and Extended Boolean Retrieval Model
+                    </a>
+                </li>
+            </ul>
+            <div class="close-menu-wrapper nav-menu-item" style="transition-delay: 0.4s;">
+                <button id="closeMenu">إغلاق القائمة ✕</button>
+            </div>
+        </div>
     </div>
 
     <script>
