@@ -359,37 +359,90 @@
             }
         }
 
-        /* Floating Navigation Menu */
-        .menu-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+        /* Sticky Top Navigation */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
             z-index: 2000;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-size: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
             border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        .menu-toggle:hover {
-            transform: scale(1.1);
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
         }
 
+        /* Overlay remains for mobile / focus */
         .nav-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1999;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 2001;
             display: none;
             justify-content: center;
             align-items: center;
@@ -409,7 +462,7 @@
         }
 
         .nav-menu-item {
-            margin: 2rem 0;
+            margin: 1.5rem 0;
             transform: translateY(20px);
             opacity: 0;
             transition: all 0.4s ease;
@@ -423,33 +476,33 @@
         .nav-menu-link {
             color: white;
             text-decoration: none;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             transition: color 0.3s;
             display: block;
             padding: 0.5rem 2rem;
         }
 
-        .nav-menu-link:hover {
-            color: var(--primary);
-        }
-
         .nav-menu-link.current {
             color: var(--primary);
-            border-bottom: 2px solid var(--primary);
         }
 
         @media print {
 
-            .menu-toggle,
+            .top-nav,
             .nav-overlay {
                 display: none !important;
             }
-        }
 
-        .slide-marker {
-            display: none;
+            body {
+                padding-top: 0 !important;
+            }
         }
+    </style>
+
+    .slide-marker {
+    display: none;
+    }
     </style>
 </head>
 
@@ -2723,10 +2776,19 @@
         </div>
     </main>
 
-    <!-- Floating Navigation Menu -->
-    <button class="menu-toggle" id="menuToggle" title="القائمة">
-        ☰
-    </button>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span>📘</span> IR Study Hub
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Intro</a>
+                <a href="text-retrieval.html" class="nav-link">Chapter 1</a>
+                <a href="boolean-retrieval.html" class="nav-link active">Chapter 2</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuToggle">☰</button>
+        </div>
+    </nav>
 
     <div class="nav-overlay" id="navOverlay">
         <ul class="nav-menu-list">
@@ -2754,12 +2816,12 @@
 
         function toggleMenu() {
             const isActive = navOverlay.classList.toggle('active');
-            menuToggle.innerHTML = isActive ? '✕' : '☰';
+            if (menuToggle) menuToggle.innerHTML = isActive ? '✕' : '☰';
             document.body.style.overflow = isActive ? 'hidden' : '';
         }
 
-        menuToggle.addEventListener('click', toggleMenu);
-        closeMenu.addEventListener('click', (e) => {
+        if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
+        if (closeMenu) closeMenu.addEventListener('click', (e) => {
             e.preventDefault();
             toggleMenu();
         });
