@@ -359,7 +359,7 @@
             }
         }
 
-        /* Sticky Top Navigation */
+        /* Slim Sticky Top Navigation */
         .top-nav {
             position: sticky;
             top: 0;
@@ -368,7 +368,7 @@
             backdrop-filter: blur(12px);
             z-index: 2000;
             border-bottom: 1px solid var(--border-color);
-            padding: 0.8rem 0;
+            padding: 0.5rem 0;
             transition: all 0.3s ease;
         }
 
@@ -385,55 +385,34 @@
             font-weight: 800;
             color: var(--primary);
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
         .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
+            display: none;
         }
 
-        .nav-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 600;
+        .menu-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            padding: 0.4rem 0.8rem;
-            border-radius: 8px;
         }
 
-        .nav-link:hover {
-            color: var(--text-main);
-            background: rgba(56, 189, 248, 0.1);
-        }
-
-        .nav-link.active {
-            color: var(--primary);
-            background: rgba(56, 189, 248, 0.1);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
+        .menu-btn:hover {
+            background: rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
         }
 
         /* Overlay remains for mobile / focus */
@@ -2781,12 +2760,9 @@
             <a href="index.html" class="nav-logo">
                 <span>📘</span> IR Study Hub
             </a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">Intro</a>
-                <a href="text-retrieval.html" class="nav-link">Chapter 1</a>
-                <a href="boolean-retrieval.html" class="nav-link active">Chapter 2</a>
-            </div>
-            <button class="mobile-menu-btn" id="menuToggle">☰</button>
+            <button class="menu-btn" id="menuToggle">
+                <span>القائمة</span> ☰
+            </button>
         </div>
     </nav>
 
