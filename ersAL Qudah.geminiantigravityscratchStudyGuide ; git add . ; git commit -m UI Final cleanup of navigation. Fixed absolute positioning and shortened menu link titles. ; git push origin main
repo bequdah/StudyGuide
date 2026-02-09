@@ -1,0 +1,29 @@
+[33mcommit c0cc4d00dbdaf99a3f93723478db9376c6bfbe3e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Mohammad Qudah <qudahmohammad36@gmail.com>
+Date:   Tue Feb 10 00:51:12 2026 +0300
+
+    UI: Revert navigation to simple absolute button (scrolls away) and remove logo
+
+[33mcommit 04e4bb612eb025e4dee3d6a3e8b67d5ee383e644[m
+Author: Mohammad Qudah <qudahmohammad36@gmail.com>
+Date:   Tue Feb 10 00:47:32 2026 +0300
+
+    UI: Minimize sticky header to a slim toggle menu
+
+[33mcommit a601051bf5bddf2bf1dcce00fc402c1436a3414d[m
+Author: Mohammad Qudah <qudahmohammad36@gmail.com>
+Date:   Tue Feb 10 00:43:46 2026 +0300
+
+    UI: Change navigation from floating button to sticky top bar
+
+[33mcommit 8f50210cda370cea4af73d5db492f93483c380b4[m
+Author: Mohammad Qudah <qudahmohammad36@gmail.com>
+Date:   Tue Feb 10 00:23:52 2026 +0300
+
+    Fix: dark mode background color for diagrams in text-retrieval.html
+
+[33mcommit 582ca556bc8271df9cf33486d2cad5be5b6dc05f[m
+Author: Mohammad Qudah <qudahmohammad36@gmail.com>
+Date:   Tue Feb 10 00:16:03 2026 +0300
+
+    Cleanup: remove unwanted labels and text
