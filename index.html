@@ -1167,76 +1167,70 @@
 
                     <p class="ar-text">هاض المخطط بيشرح لك "دورة حياة" عملية البحث بشكل احترافي وواضح:</p>
 
-                    <div <div
-                        style="background: var(--card-bg); color: var(--text-main); border: 1px solid #eee; border-radius: 16px; padding: 2.5rem; margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%; box-sizing: border-box;">
+                    <div
+                        style="background: var(--card-bg); color: var(--text-main); border: 1px solid #eee; border-radius: 20px; padding: 3rem; margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%; box-sizing: border-box; overflow: hidden;">
 
-                        <!-- Top Component: Document Corpus -->
-                        <div
-                            style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; z-index: 2;">
+                        <!-- Top: Corpus -->
+                        <div style="display: flex; flex-direction: column; align-items: center;">
                             <div
-                                style="background: #00838f; color: white; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 700; box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2); display: flex; align-items: center; gap: 0.5rem; border: 2px solid #006064;">
+                                style="background: #00838f; color: white; padding: 1rem 2.5rem; border-radius: 12px; font-weight: 700; box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2); display: flex; align-items: center; gap: 0.8rem; border: 2px solid #006064; font-size: 1.1rem;">
                                 <span>📚</span> Document corpus
                             </div>
-                            <!-- SVG Down Arrow -->
-                            <svg width="24" height="40" viewBox="0 0 24 40">
+                            <svg width="24" height="60" viewBox="0 0 24 40">
                                 <path d="M12 0 L12 35 M5 28 L12 35 L19 28" fill="none" stroke="#00838f" stroke-width="3"
                                     stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
 
-                        <!-- Middle Row -->
+                        <!-- Main Row: System and Query -->
                         <div
-                            style="display: flex; align-items: center; gap: 2rem; width: 100%; justify-content: center;">
+                            style="display: flex; align-items: flex-start; gap: 5rem; justify-content: center; width: 100%;">
 
-                            <!-- Right (First Child in RTL): User & Query -->
-                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                <div style="font-size: 2rem;">👨‍💻</div>
+                            <!-- Middle-Left: System and Results -->
+                            <div style="display: flex; flex-direction: column; align-items: center;">
                                 <div
-                                    style="background: #ffffff; color: #00acc1; padding: 0.7rem 1.2rem; border-radius: 12px; font-weight: 700; border: 2px solid #00acc1; box-shadow: 0 4px 6px rgba(0,0,0,0.05); min-width: 120px; text-align: center;">
+                                    style="background: #2e7d32; color: white; padding: 2.5rem 3.5rem; border-radius: 16px; font-weight: 800; font-size: 1.4rem; box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3); border: 3px solid #1b5e20; text-align: center; min-width: 240px;">
+                                    IR System
+                                    <div style="font-size: 0.9rem; font-weight: 400; margin-top: 0.5rem; opacity: 0.9;">
+                                        (The Retrieval Engine)</div>
+                                </div>
+                                <svg width="24" height="50" viewBox="0 0 24 40" style="margin: 0.5rem 0;">
+                                    <path d="M12 0 L12 35 M5 28 L12 35 L19 28" fill="none" stroke="#2e7d32"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div
+                                    style="background: #ffffff; border: 2px dashed #00acc1; padding: 1.5rem 2.5rem; border-radius: 16px; display: flex; align-items: center; gap: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
+                                    <div
+                                        style="color: #00acc1; font-weight: 800; font-size: 1.2rem; border-left: 2px solid #eee; padding-left: 1.5rem; margin-left: 1.5rem; text-align: center;">
+                                        🏆 Ranked<br>Documents
+                                    </div>
+                                    <div style="font-family: 'Inter', monospace; color: #1e293b; font-size: 1rem; line-height: 1.6; text-align: left;"
+                                        dir="ltr">
+                                        <span style="color: #00838f; font-weight: 700;">1.</span> Document #A (98%)<br>
+                                        <span style="color: #00838f; font-weight: 700;">2.</span> Document #B (85%)<br>
+                                        <span style="color: #00838f; font-weight: 700;">3.</span> Document #C (72%)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Connector Arrow -->
+                            <div style="display: flex; align-items: center; height: 120px;">
+                                <svg width="80" height="24" viewBox="0 0 40 24">
+                                    <path d="M40 12 L5 12 M12 5 L5 12 L12 19" fill="none" stroke="#00acc1"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+
+                            <!-- Middle-Right: Query -->
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                                <div style="font-size: 3.5rem;">👨‍💻</div>
+                                <div
+                                    style="background: #ffffff; color: #00acc1; padding: 1rem 2rem; border-radius: 12px; font-weight: 700; border: 2px solid #00acc1; box-shadow: 0 4px 10px rgba(0,0,0,0.05); min-width: 160px; text-align: center; font-size: 1.2rem;">
                                     Query String 💬
                                 </div>
                             </div>
 
-                            <!-- SVG Left Arrow (Points from Query to System) -->
-                            <svg width="40" height="24" viewBox="0 0 40 24">
-                                <path d="M40 12 L5 12 M12 5 L5 12 L12 19" fill="none" stroke="#00acc1" stroke-width="3"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-
-                            <!-- Left (Last Child in RTL): BLACK BOX ENGINE -->
-                            <div
-                                style="background: #2e7d32; color: white; padding: 2rem 2.5rem; border-radius: 12px; font-weight: 800; font-size: 1.3rem; box-shadow: 0 10px 25px rgba(46, 125, 50, 0.3); border: 3px solid #1b5e20; text-align: center; min-width: 180px;">
-                                IR System
-                                <div style="font-size: 0.8rem; font-weight: 400; margin-top: 0.5rem; opacity: 0.9;">(The
-                                    Retrieval Engine)</div>
-                            </div>
-
                         </div>
-
-                        <!-- SVG Down Arrow from Engine to Results -->
-                        <div style="width: 100%; display: flex; justify-content: center; transform: translateX(110px);">
-                            <!-- Offset to point from Engine -->
-                            <svg width="24" height="40" viewBox="0 0 24 40">
-                                <path d="M12 0 L12 35 M5 28 L12 35 L19 28" fill="none" stroke="#2e7d32" stroke-width="3"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-
-                        <!-- Bottom: Results -->
-                        <div
-                            style="background: #ffffff; border: 2px dashed #00acc1; padding: 1.2rem 2rem; border-radius: 12px; display: flex; align-items: center; gap: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transform: translateX(110px);">
-                            <div
-                                style="color: #00acc1; font-weight: 800; font-size: 1.1rem; border-left: 2px solid #eee; padding-left: 1.5rem; margin-left: 1.5rem;">
-                                🏆 Ranked<br>Documents
-                            </div>
-                            <div style="font-family: 'Inter', monospace; color: #1e293b; font-size: 0.9rem; line-height: 1.4; text-align: left;"
-                                dir="ltr">
-                                <span style="color: #00838f; font-weight: 700;">1.</span> Document #A (98%)<br>
-                                <span style="color: #00838f; font-weight: 700;">2.</span> Document #B (85%)<br>
-                                <span style="color: #00838f; font-weight: 700;">3.</span> Document #C (72%)
-                            </div>
-                        </div>
-
                     </div>
 
                     <div class="explanation-group" style="margin-top: 2rem;">
