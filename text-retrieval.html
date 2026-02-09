@@ -359,60 +359,40 @@
             }
         }
 
-        /* Slim Sticky Top Navigation */
+        /* Simple Top Navigation (Scrolls away) */
         .top-nav {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
+            position: absolute;
+            top: 20px;
+            right: 20px;
             z-index: 2000;
-            border-bottom: 1px solid var(--border-color);
-            padding: 0.5rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
-        }
-
-        .nav-logo {
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: none;
         }
 
         .menu-btn {
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid rgba(56, 189, 248, 0.2);
             color: var(--primary);
-            padding: 0.4rem 1rem;
+            padding: 0.6rem 1rem;
             border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .menu-btn:hover {
             background: rgba(56, 189, 248, 0.2);
-            transform: translateY(-2px);
+            transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 768px) {
+            .top-nav {
+                right: 10px;
+                top: 10px;
+            }
         }
 
         /* Overlay remains for mobile / focus */
@@ -1069,16 +1049,11 @@
         </div>
     </main>
 
-    <nav class="top-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <span>📘</span> IR Study Hub
-            </a>
-            <button class="menu-btn" id="menuToggle">
-                <span>القائمة</span> ☰
-            </button>
-        </div>
-    </nav>
+    <div class="top-nav">
+        <button class="menu-btn" id="menuToggle">
+            <span>القائمة</span> ☰
+        </button>
+    </div>
 
     <div class="nav-overlay" id="navOverlay">
         <ul class="nav-menu-list">
