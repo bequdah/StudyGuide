@@ -125,12 +125,20 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Cairo', 'Inter', sans-serif;
             line-height: 1.6;
             display: flex;
+            flex-direction: column;
             min-height: 100vh;
         }
 
@@ -260,7 +268,8 @@
             margin-top: 2rem;
             background: #1e293b;
             border-radius: 12px;
-            overflow: hidden;
+            overflow-x: auto;
+            display: block;
             box-shadow: var(--shadow-soft);
             border: 1px solid var(--border-color);
         }
@@ -306,6 +315,8 @@
             margin: 3rem 0;
             gap: 1rem;
             flex-wrap: wrap;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         .diagram-node {
@@ -398,10 +409,13 @@
         /* Premium Navigation Overlay */
         .nav-overlay {
             position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.9);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(20px);
-            z-index: 2001;
+            z-index: 9999;
             display: none;
             justify-content: center;
             align-items: center;
@@ -466,6 +480,8 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
             text-align: right;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .nav-menu-link .icon {
