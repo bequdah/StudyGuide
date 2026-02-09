@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استرجاع المعلومات | قصة البداية</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --accent: #facc15;
+            --border-color: #334155;
+            --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+        }
+
+        @media print {
+
+            html,
+            body {
+                background: white !important;
+                color: black !important;
+                display: block !important;
+                height: auto !important;
+            }
+
+            main {
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+            }
+
+            .content-wrapper {
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .content-card {
+                background: white !important;
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+                break-inside: avoid;
+                margin-bottom: 30px !important;
+                padding: 25px !important;
+                color: black !important;
+                display: block !important;
+            }
+
+            header {
+                border-bottom: 4px solid black !important;
+                text-align: center !important;
+                margin-bottom: 30px !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            .section-title {
+                color: black !important;
+                border-bottom-color: black !important;
+            }
+
+            .ar-text,
+            .explanation-text,
+            .explanation-group,
+            .example-box,
+            p,
+            span,
+            li,
+            div,
+            small {
+                color: black !important;
+                background: transparent !important;
+            }
+
+            .en-line,
+            .prof-point {
+                color: #854d0e !important;
+                border-left: 4px solid #854d0e !important;
+                padding-left: 15px !important;
+                margin: 15px 0 !important;
+                font-weight: bold !important;
+                display: block !important;
+            }
+
+            .accent-text,
+            .key-concept,
+            strong {
+                color: #991b1b !important;
+                font-weight: bold !important;
+            }
+
+            .example-box {
+                background: #f8fafc !important;
+                border: 1px solid #94a3b8 !important;
+                border-left: 5px solid black !important;
+            }
+
+            table,
+            th,
+            td {
+                border: 1px solid black !important;
+                color: black !important;
+            }
+
+            th {
+                background: #f1f5f9 !important;
+            }
+
+            .diagram-container,
+            .diagram-node {
+                border-color: black !important;
+                color: black !important;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Cairo', 'Inter', sans-serif;
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 5px solid var(--primary);
+            text-align: right;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        header .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            opacity: 1;
+            margin-bottom: 1rem;
+        }
+
+        header .author-line {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-style: italic;
+            background: rgba(0, 138, 109, 0.05);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(0, 138, 109, 0.1);
+            direction: ltr;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .explanation-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .en-line,
+        .prof-point {
+            direction: ltr;
+            text-align: left;
+            display: block;
+            color: var(--accent) !important;
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .ar-text {
+            direction: rtl;
+            text-align: right;
+            display: block;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        .key-concept {
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: rgba(0, 138, 109, 0.2);
+        }
+
+        .example-box {
+            background: #0f172a;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem;
+            text-align: right;
+        }
+
+        table {
+            background: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        th,
+        td {
+            border-color: var(--border-color);
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+            font-size: 1rem;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #0f172a;
+        }
+
+        .comparison-table .feature {
+            font-weight: 700;
+            color: var(--accent);
+            width: 25%;
+        }
+
+        .diagram-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 3rem 0;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .diagram-node {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            text-align: center;
+            background: #0f172a;
+            min-width: 150px;
+            color: var(--text-main);
+        }
+
+        .diagram-process {
+            background: var(--primary);
+            color: white;
+        }
+
+        .diagram-arrow {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        @media screen {
+
+            .ar-text,
+            .explanation-text,
+            .explanation-group,
+            .example-box,
+            .content-card p,
+            .content-card li,
+            .content-card span:not(.prof-point):not(.en-line):not(.slide-marker),
+            .explanation-group div,
+            .ar-text small {
+                color: var(--text-main) !important;
+            }
+        }
+
+        strong {
+            color: inherit;
+        }
+
+        .explanation-text.ar-text,
+        .ar-text small {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 1024px) {
+            main {
+                padding: 2rem 5%;
+            }
+        }
+
+        /* Floating Navigation Menu */
+        .menu-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+            z-index: 2000;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.5rem;
+            border: none;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .nav-menu-list {
+            list-style: none;
+            text-align: center;
+            padding: 0;
+        }
+
+        .nav-menu-item {
+            margin: 2rem 0;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .nav-overlay.active .nav-menu-item {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .nav-menu-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 800;
+            transition: color 0.3s;
+            display: block;
+            padding: 0.5rem 2rem;
+        }
+
+        .nav-menu-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu-link.current {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        @media print {
+
+            .menu-toggle,
+            .nav-overlay {
+                display: none !important;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;800&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+
+
+    <main>
+        <div class="content-wrapper">
+            <header id="main-header">
+                <h1>Chapter 1</h1>
+                <div class="author-line">
+                    by <strong>Mohammad Qudah</strong>
+                </div>
+            </header>
+
+            <article id="content-area">
+
+                <!-- The Story Section -->
+                <div class="content-card" id="story"
+                    style="border-right: 8px solid var(--accent); background: rgba(22, 163, 74, 0.1);">
+                    <h2 class="section-title" style="color: #fb7185;">📖 قصة "الإبرة في كومة القش"</h2>
+
+                    <div class="explanation-group">
+                        <span class="ar-text">تخيل حالك يا بطل ماشي في مدينة ضخمة، ودخلت على أكبر مكتبة في العالم.
+                            المكتبة هاي
+                            فيها **مليارات الكتب**، بس المشكلة إنها "فوضى": <br><br>
+                            <strong style="color: #fb7185;">• ما في أرفف!</strong> الكتب كلها مرمية فوق بعض في نص
+                            الصالة.<br>
+                            <strong style="color: #fb7185;">• ما في أمين مكتبة!</strong> يساعدك تلاقي كتابك.<br>
+                            <strong style="color: #fb7185;">• ما في فهرس!</strong> يدلك وين تروح.
+                        </span>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="ar-text">وأنت هسا مطلوب منك تلاقي "وصفة عمل الكبسة" من بين هالكتب كلها! <br>
+                            لو بدك تستخدم **الأسلوب التقليدي (قواعد البيانات/DB)**، لازم يكون عندنا جدول فيه خانة "اسم
+                            الوصفة" واسم "الكتاب". بس الكتب اللي قدامك هي نصوص حرة، ما حدا حطها بجداول.</span>
+                    </div>
+
+                    <div class="example-box" style="border-right: 4px solid var(--accent);">
+                        <span class="ar-text">هون ظهرت حاجتنا لعلم اسمه **Information Retrieval (IR)**. <br><br>
+                            هذا العلم انخلق عشان يكون هو "أمين المكتبة الذكي" اللي بيقدر يقرأ مليارات النصوص بلمحة عين،
+                            ويفهم سؤالك البشري البسيط، ويركض بسرعة وسط هالكتب عشان يسحب لك الكتاب اللي فعلاً بيحتوي على
+                            الوصفة اللي بتدور عليها.</span>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="ar-text" style="font-weight: 700;">من غير الـ IR:</span>
+                        <span class="ar-text">غوغل (Google) ما كان موجود، إيميلك كان رح يضل فوضى والبحث فيه مستحيل، وحتى
+                            ملفاتك الشخصية على الكمبيوتر كنت رح تضيع بينهم للأبد. <br><br>
+                            إحنا بنسمي هذا العصر عصر الـ **Information Overload** (تضخم المعلومات)، والـ IR هو "البوصلة"
+                            الوحيدة اللي بتخلينا ننجو من هالغرق!</span>
+                    </div>
+
+
+                </div>
+
+                <!-- Slide 2: Why this course? -->
+                <div class="content-card" id="slide2">
+                    <h2 class="section-title">Why this course?</h2>
+
+                    <!-- Point 1 -->
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Managing Data is one of the primary uses of computers</span>
+                        <div class="ar-text">
+                            ببساطة، الحواسيب انخلقت عشان وظيفة أساسية: "إدارة البيانات". من يومها وهي أداة بتخزن وبترتب
+                            المعلومات عشان نقدر نرجعلها ونستفيد منها.
+                        </div>
+                    </div>
+
+                    <!-- Point 2 -->
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Most of textual data is NOT contained in structured databases</span>
+                        <div class="ar-text">
+                            أغلب البيانات اللي بنستخدمها كل يوم (زي الإيميلات والـ PDF) <span class="key-concept">مش
+                                مخزنة</span> بانتظام جوا "جداول". هي نصوص فوضوية ومفتوحة.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">✓ No use of structured queries</span>
+                        <div class="ar-text">
+                            بما إن هالمعلومات مش بجدول، إنسى إنك تقدر تستخدم لغات زي SQL عشان تسأل عنها. ما فيك تحكي
+                            "Select" من نص مكتوب بشكل فوضوي، وهاض هو التحدي التقني الكبير.
+                        </div>
+                    </div>
+
+                    <!-- Point 3 -->
+                    <div class="explanation-group">
+                        <span class="en-line">▪ How do we address this?</span>
+                        <div class="ar-text">
+                            طيب وكيف بدنا نحل هالمعضلة؟ كيف بدنا نلاقي معلومة جوا نصوص مالها آخر وغير منظمة؟
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="text-align: center; background: rgba(0, 86, 179, 0.1); padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+                        <span class="en-line">Information
+                            Retrieval</span>
+                        <div class="ar-text" style="font-weight: 700; color: var(--primary);">
+                            الحل هو "استرجاع المعلومات". هاض العلم هو اللي بيعلمنا الطرق والخورزميات اللي بتفهم النصوص
+                            وبتقدر تطلع لنا المعلومة الصح منها وبسرعة خرافية.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Information Retrieval Definition -->
+                <div class="content-card" id="slide-def">
+                    <h2 class="section-title">Information Retrieval Definition</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-line">Information retrieval (IR) is finding material (usually documents) of an
+                            unstructured nature (usually text) that satisfies an information need from within large
+                            collections (usually stored on computers).</span>
+                        <div class="ar-text">
+                            **التعريف باختصار:** هو عملية البحث عن "مواد" (غالباً مستندات نصية) طبيعتها غير منظمة (يعني
+                            مش جداول)، عشان تلبي حاجة المستخدم للمعلومة من بين مجموعات ضخمة جداً مخزنة على الحواسيب.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5: Why Information Retrieval? (Overload) -->
+                <div class="content-card" id="slide5">
+                    <h2 class="section-title">Why Information Retrieval?</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ An essential tool to deal with information overload</span>
+                        <div class="ar-text">
+                            الـ IR هو أداة ضرورية جداً عشان نقدر نتعامل مع "تضخم المعلومات" (Information Overload) اللي
+                            صار في عصرنا. بدون هالأنظمة، رح نضيع في بحر البيانات وما رح نقدر نوصل للي بدنا إياه.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 6: Why Information Retrieval? (Unstructured) -->
+                <div class="content-card" id="slide6">
+                    <h2 class="section-title">Why Information Retrieval?</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Information Retrieval (IR) mainly studies unstructured data.</span>
+                        <div class="ar-text">
+                            ركز معي هون يا صديقي؛ علم الـ IR تخصصه هو دراسة "البيانات غير المنظمة" (Unstructured Data).
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">▪ Text in Web pages or emails; e-books, text documents..</span>
+                        <div class="ar-text">
+                            زي النصوص الموجودة في صفحات الويب، الإيميلات، الكتب الإلكترونية، وغيرها من المستندات النصية.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Unstructured data:</span>
+                        <div class="ar-text">
+                            وهاي البيانات بتتميز بـ:
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">▪ No primary key and attributes as in RDBMS</span>
+                        <div class="ar-text">
+                            إنها ما إلها "مفتاح أساسي" (Primary Key) أو صفات محددة مسبقاً زي ما هو موجود في قواعد
+                            البيانات التقليدية (RDBMS).
+                        </div>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Semantic meaning unknown: natural language processing systems try to
+                            find the meaning in the unstructured text.</span>
+                        <div class="ar-text">
+                            المعنى "الدلالي" للنصوص بكون غير معروف للكمبيوتر بشكل مباشر، وعشان هيك بنحتاج لأنظمة الـ NLP
+                            عشان تحاول تستخرج المعنى وتفهم إيش المكتوب.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide: Information Retrieval: Challenges -->
+                <div class="content-card" id="slide-challenges">
+                    <h2 class="section-title">Information Retrieval: Challenges</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Data is unstructured</span>
+                        <div class="ar-text">
+                            أول مطب بيواجهنا هو إن البيانات "غير منظمة".
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">▪ Need to guess what is relevant documents</span>
+                        <div class="ar-text">
+                            بما إنها نصوص فوضوية، السيستم مضطر "يتحزر" (Guess) إيش هي المستندات اللي فعلاً إلها علاقة
+                            بطلبك.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Query is unstructured</span>
+                        <div class="ar-text">
+                            مش بس البيانات، حتى "سؤالك" (Query) بكون غير منظم؛ يعني بتكتب كلمات بسيطة وممكن تكون غامضة.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">▪ Need to guess user intent</span>
+                        <div class="ar-text">
+                            والسيستم هون لازم يحاول يحزر "نيتك" (Intent) وإيش قصدك الحقيقي من وراء الكلمات اللي كتبتها.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ But computers don't guess!</span>
+                        <div class="ar-text">
+                            وهون "المشكلة الكبيرة"؛ الكمبيوتر بطبعه ما بيعرف يحزر! هو جهاز منطقي بيفهم (١ و ٠) وبس.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="text-align: center; background: rgba(214, 51, 1, 0.1); border: 1px dashed #d63301;">
+                        <span class="en-line">Inferring
+                            relevance and intent from data, query is the science of Information Retrieval</span>
+                        <div class="ar-text" style="font-weight: 700;">
+                            جوهر علم الـ IR هو "الاستنتاج الذكي"؛ يعني كيف نخلي الكمبيوتر "يستنتج" الصلة والقصد من بين
+                            البيانات والسؤال الفوضويين. هاض هو السحر الحقيقي في هالمادة! ✨
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide: The IR Problem (Consolidated) -->
+                <div class="content-card" id="slide-problem">
+                    <h2 class="section-title">The IR Problem</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Users of modern IR systems, such as search engine users, have
+                            information needs of varying complexity</span>
+                        <div class="ar-text">
+                            الناس اللي بتستخدم أنظمة الـ IR (زي غوغل) عندهم حاجات للمعلومات متفاوتة في التعقيد؛ يعني في
+                            حدا ببحث عن "طقس اليوم" (بسيط) وفي حدا ببحث عن مواضيع علمية معقدة.
+                        </div>
+                    </div>
+
+                    <div class="example-box" style="margin-left: 2rem;">
+                        <span class="en-line">▪ An example of complex information need is as follows:</span>
+                        <p class="en-line">Find
+                            all documents
+                            that address the role of the Federal Government in financing the operation of the National
+                            Railroad Transportation Corporation (AMTRAK)</p>
+                        <div class="ar-text">
+                            تخيل لو حدا طلب هاض الطلب المعقد: "بدي كل المستندات اللي بتناقش دور الحكومة في تمويل شركة
+                            القطارات الوطنية". جملة طويلة ومعقدة، صح؟
+                        </div>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ This full description of the user information need is not necessarily a
+                            good query to be submitted to the IR system</span>
+                        <div class="ar-text">
+                            هاض الوصف الطويل "اللي ببال المستخدم" مش شرط يكون "سؤال بحث" (Query) ناجح. لو حطيته زي ما هو
+                            بالسيستم ممكن يضيع وما يعرف يلاقيلك المعلومات الصح.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">▪ Instead, the user might want to first translate this information need
+                            into a query</span>
+                        <div class="ar-text">
+                            عشان هيك، المستخدم لازم "يترجم" حاجته هاي لـ Query مختصر بيفهمه السيستم.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">▪ This translation process yields a set of keywords, or index terms, which
+                            summarize the user information need</span>
+                        <div class="ar-text">
+                            عملية الترجمة هاي بطلع لنا "كلمات مفتاحية" (Keywords) بتلخص الموضوع، وبسهولة بيقدر السيستم
+                            يدور عليها.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                        <span class="en-line">▪ Given the user query, the key goal of the IR system is to retrieve
+                            information that is useful or relevant to the user.</span>
+                        <div class="ar-text">
+                            بمجرد ما صار عنا Query، هدف السيستم إنه يرجعلنا المعلومات "المفيدة" أو "ذات الصلة"
+                            (Relevant) إلك.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">▪ That is, the IR system must rank the information items (e.g., documents)
+                            according to a degree of relevance to the user query.</span>
+                        <div class="ar-text">
+                            والأهم من هيك، السيستم لازم "يرتب" (Rank) هاي النتائج حسب درجة صلتها؛ يعني الأكثر أهمية
+                            بطلعلك أول واحد.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group" style="margin-top: 2rem;">
+                        <span class="en-line">▪ The key goal of an IR system is to retrieve all the items that are
+                            relevant to a user query, while retrieving as few non relevant items as possible.</span>
+                        <div class="ar-text">
+                            الهدف الذهبي: نرجعل كل شي "اله دخل" (Relevant)، وفي نفس الوقت نطلع أقل قدر ممكن من الشغلات
+                            اللي "مالها دخل".
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">▪ The notion of relevance is of central importance in IR.</span>
+                        <div class="ar-text">
+                            مفهوم الـ **Relevance** هو "العمود الفقري" لكل علم استرجاع المعلومات.
+                        </div>
+                    </div>
+
+                    <div class="highlight-box"
+                        style="background: rgba(214, 51, 1, 0.1); color: var(--text-main); border: 1px solid var(--accent);">
+                        <span class="en-line">NO IR system can
+                            Provide perfect answers to all users all the time.</span>
+                        <div class="ar-text" style="font-weight: 700; color: #fb7185;">
+                            خلينا نكون صريحين: ما في أي نظام IR بالعالم بيقدر يعطي "أجوبة مثالية" لكل الناس في كل
+                            الأوقات. هاض شي شبه مستحيل تقنياً! 🤷‍♂️
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide: Comparison of Structured Data retrieval and Information retrieval (Consolidated) -->
+                <div class="content-card" id="slide-comparison">
+                    <h2 class="section-title">Comparison of Structured Data retrieval and Information retrieval</h2>
+
+                    <p class="ar-text">هاض الجدول بيلخص لك الفرق بين طريقة البحث التقليدية في قواعد البيانات (زي
+                        SQL) وبين استرجاع المعلومات (زي غوغل). ركز فيهم لأنهم بوضحوا لك ليش مادتنا "غير شكل"!</p>
+
+                    <div class="table-container" style="overflow-x: auto; margin-top: 1.5rem;">
+                        <table
+                            style="width: 100%; border-collapse: collapse; background: rgba(22, 163, 74, 0.1); color: var(--text-main); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                            <thead>
+                                <tr style="background: var(--primary); color: white; text-align: right;">
+                                    <th style="padding: 1rem;">Comparison (وجه المقارنة)</th>
+                                    <th style="padding: 1rem;">Data Retrieval (DB)</th>
+                                    <th style="padding: 1rem;">Information Retrieval (IR)</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: right;">
+                                <!-- Row 1 -->
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem; font-weight: 700; color: #fb7185;">Searching Content</td>
+                                    <td style="padding: 1rem;">Structured Data in DBMS</td>
+                                    <td style="padding: 1rem;">Unstructured Data (Text documents)</td>
+                                </tr>
+                                <tr
+                                    style="background: var(--card-bg); color: var(--text-main); border-bottom: 1px solid var(--border-color);">
+                                    <td colspan="3" style="padding: 0.5rem 1rem;">
+                                        <div class="ar-text" style="font-size: 0.9rem; color: var(--text-main);">
+                                            **الفكرة:** في الـ
+                                            DB بندور ببيانات منظمة ومرتبة، أما في الـ IR بندور في نصوص فوضوية
+                                            (Unstructured).</div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 2 -->
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem; font-weight: 700; color: #fb7185;">Data object</td>
+                                    <td style="padding: 1rem;">Tables</td>
+                                    <td style="padding: 1rem;">Any type of text documents</td>
+                                </tr>
+                                <tr
+                                    style="background: var(--card-bg); color: var(--text-main); border-bottom: 1px solid var(--border-color);">
+                                    <td colspan="3" style="padding: 0.5rem 1rem;">
+                                        <div class="ar-text" style="font-size: 0.9rem; color: var(--text-main);">
+                                            **الفكرة:** الـ DB
+                                            بتتعامل مع جداول، الـ IR بتفتح أي ملف نصي وبتتعامل معه.</div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 3 -->
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem; font-weight: 700; color: #fb7185;">Matching of results
+                                    </td>
+                                    <td style="padding: 1rem;">Exact Match</td>
+                                    <td style="padding: 1rem;">Partial match, best match</td>
+                                </tr>
+                                <tr
+                                    style="background: var(--card-bg); color: var(--text-main); border-bottom: 1px solid var(--border-color);">
+                                    <td colspan="3" style="padding: 0.5rem 1rem;">
+                                        <div class="ar-text" style="font-size: 0.9rem; color: var(--text-main);">
+                                            **الفكرة:** في الـ
+                                            DB لازم المعلومة تكون نسخة طبق الأصل (Exact)، في الـ IR ممكن نلاقي "أفضل
+                                            نتيجة" أو نتائج جزئية.</div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 4 -->
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem; font-weight: 700; color: #fb7185;">Items wanted</td>
+                                    <td style="padding: 1rem;">Matching</td>
+                                    <td style="padding: 1rem;">Relevance</td>
+                                </tr>
+                                <tr
+                                    style="background: var(--card-bg); color: var(--text-main); border-bottom: 1px solid var(--border-color);">
+                                    <td colspan="3" style="padding: 0.5rem 1rem;">
+                                        <div class="ar-text" style="font-size: 0.9rem; color: var(--text-main);">
+                                            **الفكرة:** في الـ
+                                            DB بدنا "مطابقة"، في الـ IR بدنا شي "إله صلة" (Relevance).</div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 5 -->
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem; font-weight: 700; color: #fb7185;">Query language</td>
+                                    <td style="padding: 1rem;">SQL</td>
+                                    <td style="padding: 1rem;">Simple keyword queries (NL)</td>
+                                </tr>
+                                <tr
+                                    style="background: var(--card-bg); color: var(--text-main); border-bottom: 1px solid var(--border-color);">
+                                    <td colspan="3" style="padding: 0.5rem 1rem;">
+                                        <div class="ar-text" style="font-size: 0.9rem; color: var(--text-main);">
+                                            **الفكرة:** في الـ
+                                            DB لازم نكتب كود SQL، في الـ IR بنكتب بأي لغة بشرية عادية.</div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 6 (Combined from slide 14) -->
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem; font-weight: 700; color: #fb7185;">Query specification
+                                    </td>
+                                    <td style="padding: 1rem;">Complete</td>
+                                    <td style="padding: 1rem;">Incomplete expressed in NL</td>
+                                </tr>
+                                <tr
+                                    style="background: var(--card-bg); color: var(--text-main); border-bottom: 1px solid var(--border-color);">
+                                    <td colspan="3" style="padding: 0.5rem 1rem;">
+                                        <div class="ar-text" style="font-size: 0.9rem; color: var(--text-main);">
+                                            **الفكرة:** في الـ
+                                            DB لازم نحدد كل الطلب بشكل كامل، في الـ IR الطلب بكون ناقص والسيستم بيفهمه
+                                            من اللغة.</div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 7 (Combined from slide 14) -->
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem; font-weight: 700; color: #fb7185;">Model</td>
+                                    <td style="padding: 1rem;">Deterministic</td>
+                                    <td style="padding: 1rem;">Probabilistic</td>
+                                </tr>
+                                <tr
+                                    style="background: var(--card-bg); color: var(--text-main); border-bottom: 1px solid var(--border-color);">
+                                    <td colspan="3" style="padding: 0.5rem 1rem;">
+                                        <div class="ar-text" style="font-size: 0.9rem; color: var(--text-main);">
+                                            **الفكرة:** الـ DB
+                                            حتمية (يا صح يا خطأ)، أما الـ IR احتمالية (بناءً على التوقع).</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Slide 15: Example: Search in DB vs IR -->
+                <div class="content-card" id="slide-example-db-ir">
+                    <h2 class="section-title">Example: Search in DB vs IR</h2>
+                    <h3 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 1rem;">First Application of IR:
+                        Libraries</h3>
+
+                    <div class="example-box"
+                        style="background: rgba(22, 163, 74, 0.1); color: var(--text-main); border: 1px solid var(--border-color); margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-main); margin-bottom: 0.5rem;">External Attributes (بيانات خارجية)
+                        </h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-main); line-height: 1.6;">
+                            <li><strong>Title:</strong> Operating System Concepts, 9th Edition</li>
+                            <li><strong>Author(s):</strong> Abraham Silberschatz, Peter B. Galvin, Greg Gagne</li>
+                            <li><strong>Release date:</strong> December 2012</li>
+                            <li><strong>Publisher(s):</strong> Wiley</li>
+                            <li><strong>ISBN:</strong> 9781118063330</li>
+                        </ul>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="background: rgba(0, 86, 179, 0.1); color: var(--text-main); border-right: 4px solid var(--primary);">
+                        <span class="en-line">Search
+                            by external attributes = Search in DB (Not IR)</span>
+                        <div class="ar-text">
+                            لما تيجي تدور على كتاب باستخدام "بياناته الخارجية" (زي اسمه، المؤلف، التاريخ، أو الرقم
+                            التسلسلي ISBN)، هاض بنسميه **بحث في قواعد البيانات (DB Search)**. ليش؟ لأنها بيانات منظمة
+                            وموجودة في جداول.
+                        </div>
+                    </div>
+
+                    <div class="example-box"
+                        style="background: var(--card-bg); border: 1px solid var(--border-color); margin-top: 1.5rem; padding: 1.5rem;">
+                        <h4 style="color: var(--text-main); margin-bottom: 0.5rem;">Internal Attributes (Content -
+                            المضمون الداخلي)
+                        </h4>
+                        <p style="margin-bottom: 0.5rem;"><strong>Content:</strong> &lt;Text&gt;</p>
+                        <p style="color: #fb7185;"><strong>Keywords (Keyterms):</strong> e.g. process, thread,
+                            memory
+                            management</p>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="background: rgba(214, 51, 1, 0.1); color: var(--text-main); border-right: 4px solid var(--accent); margin-top: 1rem;">
+                        <span class="en-line">Search by
+                            internal attributes: IR (search by content)</span>
+                        <div class="ar-text">
+                            أما لما تبحث جوا "مضمون" الكتاب نفسه (Content).. يعني تدور على كلمات زي "Process" أو
+                            "Thread" موجودة جوا الصفحات، هاض هو الـ **IR الحقيقي**. إحنا هون بندور في "النصوص فوضوية"
+                            اللي جوا المستند، مش في معلومات الغلاف!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide: Typical IR Task -->
+                <div class="content-card" id="slide-ir-task">
+                    <h2 class="section-title">Typical IR Task</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Given:</span>
+                        <div class="ar-text">
+                            شو المعطيات اللي بتكون بين إيدينا؟
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">✓ A corpus of textual natural-language
+                            documents.</span>
+                        <div class="ar-text">
+                            أول شي، بكون عنا "Corpus" (يعني مجموعة ضخمة) من المستندات النصية المكتوبة بلغة بشرية عادية.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid var(--border-color); margin-right: 1.5rem;">
+                        <span class="en-line">✓ A user query in the form of a textual
+                            string.</span>
+                        <div class="ar-text">
+                            وثاني شي، سؤال أو طلب من المستخدم (Query) بكون عبارة عن جملة نصية.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group" style="margin-top: 1rem;">
+                        <span class="en-line">▪ Find:</span>
+                        <div class="ar-text">
+                            وشو المطلوب نلاقي؟
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid #eee; margin-right: 1.5rem;">
+                        <span class="en-line">✓ A ranked set of documents that are relevant to
+                            the query.</span>
+                        <div class="ar-text">
+                            المطلوب هو نطلع مجموعة "مرتبة" (Ranked) من المستندات اللي إلها صلة (Relevant) بسؤال
+                            المستخدم. ركز على كلمة مرتبة؛ لأن الترتيب هو أهم شي!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide: Types of documents -->
+                <div class="content-card" id="slide-doc-types">
+                    <h2 class="section-title">Types of documents</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Documents may be web pages, emails, books, scholarly papers, PDF, power
+                            point, forum postings, tweets, or other multimedia files, ...etc.</span>
+                        <div class="ar-text">
+                            المستندات هاي ممكن تكون أي شي يخطر ببالك: صفحات ويب، إيميلات، كتب، أبحاث علمية، ملفات PDF،
+                            عروض باوربوينت، بوستات في المنتديات، أو حتى تغريدات وتغريدات وتغريدات.. أي ملف نصي أو متعدد
+                            الوسائط ممكن نطبق عليه الـ IR.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide: IR System Diagram (Redesigned) -->
+                <div class="content-card" id="slide-ir-system-diagram">
+                    <h2 class="section-title">IR System Diagram</h2>
+
+                    <p class="ar-text">هاض المخطط بيشرح لك "دورة حياة" عملية البحث بشكل احترافي وواضح:</p>
+
+                    <div <div
+                        style="background: var(--card-bg); color: var(--text-main); border: 1px solid #eee; border-radius: 16px; padding: 2.5rem; margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%; box-sizing: border-box;">
+
+                        <!-- Top Component: Document Corpus -->
+                        <div
+                            style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; z-index: 2;">
+                            <div
+                                style="background: #00838f; color: white; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 700; box-shadow: 0 4px 15px rgba(0, 131, 143, 0.2); display: flex; align-items: center; gap: 0.5rem; border: 2px solid #006064;">
+                                <span>📚</span> Document corpus
+                            </div>
+                            <!-- SVG Down Arrow -->
+                            <svg width="24" height="40" viewBox="0 0 24 40">
+                                <path d="M12 0 L12 35 M5 28 L12 35 L19 28" fill="none" stroke="#00838f" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+
+                        <!-- Middle Row -->
+                        <div
+                            style="display: flex; align-items: center; gap: 1rem; width: 100%; justify-content: center; flex-wrap: wrap;">
+
+                            <!-- Right (First Child in RTL): User & Query -->
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                <div style="font-size: 2rem;">👨‍💻</div>
+                                <div
+                                    style="background: #ffffff; color: #00acc1; padding: 0.7rem 1.2rem; border-radius: 12px; font-weight: 700; border: 2px solid #00acc1; box-shadow: 0 4px 6px rgba(0,0,0,0.05); min-width: 120px; text-align: center;">
+                                    Query String 💬
+                                </div>
+                            </div>
+
+                            <!-- SVG Left Arrow (Points from Query to System) -->
+                            <svg width="40" height="24" viewBox="0 0 40 24">
+                                <path d="M40 12 L5 12 M12 5 L5 12 L12 19" fill="none" stroke="#00acc1" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                            <!-- Left (Last Child in RTL): BLACK BOX ENGINE -->
+                            <div
+                                style="background: #2e7d32; color: white; padding: 2rem 2.5rem; border-radius: 12px; font-weight: 800; font-size: 1.3rem; box-shadow: 0 10px 25px rgba(46, 125, 50, 0.3); border: 3px solid #1b5e20; text-align: center; min-width: 180px;">
+                                IR System
+                                <div style="font-size: 0.8rem; font-weight: 400; margin-top: 0.5rem; opacity: 0.9;">(The
+                                    Retrieval Engine)</div>
+                            </div>
+
+                        </div>
+
+                        <!-- SVG Down Arrow from Engine to Results -->
+                        <div style="width: 100%; display: flex; justify-content: center; margin-right: -100px;">
+                            <!-- Offset to point from Engine -->
+                            <svg width="24" height="40" viewBox="0 0 24 40">
+                                <path d="M12 0 L12 35 M5 28 L12 35 L19 28" fill="none" stroke="#2e7d32" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+
+                        <!-- Bottom: Results -->
+                        <div
+                            style="background: #ffffff; border: 2px dashed #00acc1; padding: 1.2rem 2rem; border-radius: 12px; display: flex; align-items: center; gap: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transform: translateX(-50px);">
+                            <div
+                                style="color: #00acc1; font-weight: 800; font-size: 1.1rem; border-left: 2px solid #eee; padding-left: 1.5rem; margin-left: 1.5rem;">
+                                🏆 Ranked<br>Documents
+                            </div>
+                            <div style="font-family: 'Inter', monospace; color: #1e293b; font-size: 0.9rem; line-height: 1.4; text-align: left;"
+                                dir="ltr">
+                                <span style="color: #00838f; font-weight: 700;">1.</span> Document #A (98%)<br>
+                                <span style="color: #00838f; font-weight: 700;">2.</span> Document #B (85%)<br>
+                                <span style="color: #00838f; font-weight: 700;">3.</span> Document #C (72%)
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="explanation-group" style="margin-top: 2rem;">
+                        <div class="ar-text">
+                            **كيف نفهم هاض المخطط؟** <br>
+                            - **المدخلات (من فوق وعلى اليسار):** السيستم بياخد حاوية البيانات الضخمة (Corpus) وبياخد
+                            سؤالك (Query). <br>
+                            - **المحرك (في النص):** هاض هو "الصندوق الأخضر" الذكي اللي بيعمل الشغل الثقيل والبحث. <br>
+                            - **المخرجات (تحت):** بطلع لك قائمة مرتبة، بحيث الأفضل والأنسب إلك بكون هو الأول بالترتيب.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide: Relevance -->
+                <div class="content-card" id="slide-relevance">
+                    <h2 class="section-title">Relevance</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Relevance is a subjective judgment and may include:</span>
+                        <div class="ar-text">
+                            كلمة "Relevance" (الصلة) مش كلمة سهلة، هي عبارة عن "حكم شخصي" (Subjective)؛ يعني بتعتمد على
+                            رأي الشخص، وممكن تشمل عدة شغلات:
+                        </div>
+                    </div>
+
+                    <ul style="list-style: none; padding-right: 1.5rem; margin-top: 1rem;">
+                        <li class="explanation-group"
+                            style="border-right: 3px solid #eee; padding-right: 1rem; margin-bottom: 1rem;">
+                            <span class="en-line" style="color: #4527a0;">▪ Being on the proper subject.</span>
+                            <div class="ar-text">يكون الموضوع اللي بالمستند هو نفسه اللي بتدور عليه بالظبط.</div>
+                        </li>
+                        <li class="explanation-group"
+                            style="border-right: 3px solid #eee; padding-right: 1rem; margin-bottom: 1rem;">
+                            <span class="en-line" style="color: #4527a0;">▪ Being timely (recent information).</span>
+                            <div class="ar-text">تكون المعلومة "طازة" وجديدة (Timely)؛ لأن معلومة قديمة ممكن ما تفيدك
+                                بشي.</div>
+                        </li>
+                        <li class="explanation-group"
+                            style="border-right: 3px solid #eee; padding-right: 1rem; margin-bottom: 1rem;">
+                            <span class="en-line" style="color: #4527a0;">▪ Being authoritative (from a trusted
+                                source).</span>
+                            <div class="ar-text">تكون المعلومة من مصدر موثوق وقوي (Authoritative)، مش أي كلام من أي
+                                مكان.</div>
+                        </li>
+                        <li class="explanation-group"
+                            style="border-right: 3px solid #eee; padding-right: 1rem; margin-bottom: 1rem;">
+                            <span class="en-line" style="color: #4527a0;">▪ Satisfying the goals of the user and his/her
+                                intended use of the information (information need).</span>
+                            <div class="ar-text">وبالأخير، إنها فعلياً "تشبع" حاجة المستخدم وتحقق هدفه اللي بباله
+                                (Information Need).</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Slide: Keyword Search -->
+                <div class="content-card" id="slide-keyword-search">
+                    <h2 class="section-title">Keyword Search</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Simplest notion of relevance is that the query string appears verbatim
+                            in the document.</span>
+                        <div class="ar-text">
+                            أبسط فكرة للـ Relevance هي إنك لما تبحث عن جملة، السيستم يروح يدور عليها "بالحرف" (Verbatim)
+                            جوا المستند. لو لقاها زي ما هي، بكون المستند "Relevant".
+                        </div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="margin-top: 1.5rem; background: rgba(214, 51, 1, 0.1); color: var(--text-main); border-right: 4px solid var(--accent);">
+                        <span class="en-line"
+                            style="font-weight: 700; color: #d63301; border: none; margin-bottom: 0.5rem;">▪ Slightly
+                            less strict notion is that the words in the query appear frequently in the document, in any
+                            order (bag of words).</span>
+                        <div class="ar-text">
+                            في فكرة تانية "أقل تشدد"، وهي إن الكلمات اللي بسؤالك تظهر "بكثرة" (Frequently) جوا المستند،
+                            وبأي ترتيب كان.. هاض اللي بنسميه "Bag of Words" (يعني كيس حاطين فيه كلمات فوضوية). السيستم
+                            هون ما بهمه الترتيب، المهم التكرار!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide: Problems with Keywords -->
+                <div class="content-card" id="slide-keyword-problems">
+                    <h2 class="section-title">Problems with Keywords</h2>
+                    <p class="ar-text">البحث بالكلمات المفتاحية (Keyword Search) مش دايماً بكون دقيق، وبرغم بساطته،
+                        بوقعنا في مطبين كبار:</p>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ May not retrieve relevant documents that include synonymous
+                            terms.</span>
+                        <div class="ar-text">
+                            أول مشكلة: هاض السيستم غبي شوي بالمعاني؛ يعني لو دورت بكلمة، وممكن يكون في مستند "مهم جداً"
+                            بس مستخدم كلمة تانية بتعطي **نفس المعنى (Synonyms)**، السيستم ما راح يطلعه!
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: rgba(0, 172, 193, 0.05); padding: 1rem; border-radius: 8px; margin: 0 1.5rem 1.5rem 0; border-right: 3px solid #00acc1;">
+                        <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Inter', sans-serif;">
+                            <li>🔹 "restaurant" vs. "café"</li>
+                            <li>🔹 "PRC" (People's Republic of China) vs. "China"</li>
+                        </ul>
+                        <p class="ar-text" style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-main);">(لو
+                            بحثت عن
+                            "مطعم" ممكن ما يطلعلك "كافيه"، مع إنه الاثنين مفيدين إلك!)</p>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ May retrieve irrelevant documents that include ambiguous terms.</span>
+                        <div class="ar-text">
+                            المشكلة التانية هي **الغموض (Ambiguity)**؛ يعني في كلمات إلها أكتر من معنى، فالسيستم ممكن
+                            يطلعلك شغلات "ما إلها علاقة" بطلبك بسب تكرار الكلمة.
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: rgba(214, 51, 1, 0.03); padding: 1rem; border-radius: 8px; margin: 0 1.5rem 1.5rem 0; border-right: 3px solid #d63301;">
+                        <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Inter', sans-serif;">
+                            <li>🔸 "bat" (baseball vs. mammal)</li>
+                            <li>🔸 "Apple" (company vs. fruit)</li>
+                            <li>🔸 "bit" (unit of data vs. act of eating)</li>
+                        </ul>
+                        <p class="ar-text" style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-main);">(لو
+                            دورت على كلمة
+                            "Apple" إنت قصدك شركة الآيفون، السيستم ممكن يعبي لك الصفحة صور "تفاح" حقيقي! 🍎)</p>
+                    </div>
+                </div>
+
+                <!-- Slide: Intelligent IR -->
+                <div class="content-card" id="slide-intelligent-ir">
+                    <h2 class="section-title">Intelligent IR</h2>
+                    <p class="ar-text">عشان نسمي نظام الـ IR إنه "ذكي" (Intelligent)، لازم يتجاوز مجرد البحث عن كلمات،
+                        ولازم يسوي هالشغلات:</p>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Taking into account the meaning of the words used.</span>
+                        <div class="ar-text">
+                            إنه يفهم "معنى" الكلمات (Meaning) مش بس حروفها. يعني لو بحثت عن "علاج"، يفهم إن "دواء" إلها
+                            علاقة بالموضوع.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Taking into account the order of words in the query.</span>
+                        <div class="ar-text">
+                            إنه يهتم بـ "ترتيب" الكلمات (Order)؛ لأن الترتيب بغير المعنى تماماً (زي الفرق بين "بيت
+                            الكلب" و "كلب البيت").
+                        </div>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Adapting to the user based on direct or indirect feedback.</span>
+                        <div class="ar-text">
+                            إنه "يتأقلم" مع المستخدم (Adapting)؛ يعني يتعلم من حركاتك. لو ضغطت على نتيجة معينة، السيستم
+                            بيفهم إن هاض هو ذوقك وبصير يطلع لك شغلات بتشبهها المرة الجاية.
+                        </div>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line">▪ Taking into account the authority of the source.</span>
+                        <div class="ar-text">
+                            وأخيراً، إنه يهتم بـ "قوة وموثوقية" المصدر (Authority). السيستم الذكي بيعطيك معلومة من موقع
+                            جامعة أو جهة رسمية قبل ما يعطيك معلومة من بوست عشوائي.
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Slide: Some core concepts of IR -->
+                <div class="content-card" id="slide-core-concepts">
+                    <h2 class="section-title">Some core concepts of IR</h2>
+                    <p class="ar-text">في علم الـ IR، عنا ثلاثة أعمدة أساسية لازم تفهمهم عشان تعرف كيف السيستم بيشتغل من
+                        جوا:</p>
+
+                    <div class="explanation-group">
+                        <span class="en-line" style="font-weight: 700; color: var(--primary);">▪ Query
+                            Representation:</span>
+                        <div class="ar-text">
+                            إنه كيف "نُعبر" عن سؤالك (Query) بطريقة الكمبيوتر يفهمها. وهون بنحاول نسكر فجوتين:
+                        </div>
+                        <ul
+                            style="list-style: none; padding-right: 1.5rem; margin-top: 0.5rem; color: var(--text-main);">
+                            <li>✅ **Bridge lexical gap**: يعني نسكر الفجوة اللغوية؛ زي إنه يفهم إن "System" و "Systems"
+                                هم تقريباً نفس الإشي (مفرد وجمع).</li>
+                            <li>✅ **Bridge semantic gap**: يعني نسكر فجوة المعنى؛ زي إنه يفهم إن "Car" و "Automobile"
+                                بيحكوا عن نفس الإشي.</li>
+                        </ul>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line" style="font-weight: 700; color: var(--primary);">▪ Document
+                            Representation:</span>
+                        <div class="ar-text">
+                            إنه كيف "نُعبر" عن المستندات (Documents) المخزنة عندنا. السيستم بيعمل شغلتين:
+                        </div>
+                        <ul
+                            style="list-style: none; padding-right: 1.5rem; margin-top: 0.5rem; color: var(--text-main);">
+                            <li>✅ **Internal representation**: بيعمل قائمة بـ "الكلمات" وكل كلمة وين موجودة في أي مستند.
+                            </li>
+                            <li>✅ **Document structure**: بيعرف يقسم المستند لأجزاء (Fields)؛ زي العنوان (Title) وموضوع
+                                النص (Body). هاض بيساعدنا بالبحث الدقيق.</li>
+                        </ul>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line" style="font-weight: 700; color: var(--primary);">▪ Retrieval Model:</span>
+                        <div class="ar-text">
+                            هاض هو "المخ" أو "الخوارزمية" اللي بتقرر: مين هو المستند **الأكثر صلة (Most Relevant)**
+                            بسؤالك؟ هو اللي بيعمل الحسابات والترتيب النهائي.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide: IR Applications (Consolidated) -->
+                <div class="content-card" id="slide-ir-applications">
+                    <h2 class="section-title">IR Applications</h2>
+                    <p class="ar-text">استرجاع المعلومات مش بس "غوغل"، هاض العلم داخل في كل حياتنا الرقمية. ركز
+                        بهالأمثلة لأنها بتفرجينا قوة المادة:</p>
+
+                    <div class="explanation-group">
+                        <span class="en-line" style="font-weight: 700;">▪ Web Search</span>
+                        <div class="ar-text">أشهر تطبيق بنستخدمه كل ثانية، زي Google, Bing, Yahoo، اللي بيفتشوا بمليارات
+                            الصفحات.</div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid #eee; margin-right: 1.5rem;">
+                        <span class="en-line" style="font-weight: 700;">▪ Intelligent PDAs (Personal Digital
+                            Assistants)</span>
+                        <div class="ar-text">المساعدات الشخصية الذكية زي Siri و Alexa و Cortana.. كيف بيفهموا كلامك
+                            وبلاقوا لك المعلومة؟ هاض هو IR.</div>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line" style="font-weight: 700;">▪ Information Extraction</span>
+                        <div class="ar-text">لما السيستم يقرأ نص طويل "فوضوي" ويطلع منه بيانات منظمة (زي جدول أرباح)؛
+                            يعني بيعمل تحليل عميق للكلام.</div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid #eee; margin-right: 1.5rem;">
+                        <span class="en-line" style="font-weight: 700;">▪ Question-Answering</span>
+                        <div class="ar-text">مش بس يعطيك لينكات، لا، السيستم هون "بيجاوبك" مباشرة؛ زي لما تسأل غوغل "كم
+                            الساعة في لندن" ويعطيك الرقم فوراً.</div>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-line" style="font-weight: 700;">▪ Multimedia Information Retrieval</span>
+                        <div class="ar-text">البحث بالصور والفيديوهات؛ كيف السيستم بيعرف إنه هاض فيديو "بطريق" مش
+                            "غزال"؟ عن طريق استخراج خصائص الصورة والبحث عنها.</div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="padding-right: 20px; border-right: 2px solid #eee; margin-right: 1.5rem;">
+                        <span class="en-line" style="font-weight: 700;">▪ Information Recommendation</span>
+                        <div class="ar-text">نظام التوصية، زي أمازون لما يقولك "الناس اللي اشتروا هاض المنتج، اشتروا
+                            كمان هاض". السيستم هون بيتحزر شو رح تحبه بناءً على ذوق الناس اللي زيك.</div>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="background: rgba(0, 172, 193, 0.05); padding: 1rem; border-radius: 8px; border-right: 4px solid #00acc1; margin-top: 1rem;">
+                        <span class="en-line"
+                            style="font-weight: 700; color: #00acc1; border: none; margin-bottom: 0.5rem;">▪ Online
+                            advertising</span>
+                        <div class="ar-text">الإعلانات اللي بتطلع لك وأنت بتفتش؛ السيستم (زي Google Ads) بيوصلك للإعلان
+                            الصح اللي إنت مهتم فيه "بالضبط" في اللحظة المناسبة.</div>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- Floating Navigation Menu -->
+    <button class="menu-toggle" id="menuToggle" title="القائمة">
+        ☰
+    </button>
+
+    <div class="nav-overlay" id="navOverlay">
+        <ul class="nav-menu-list">
+            <li class="nav-menu-item" style="transition-delay: 0.1s;">
+                <a href="index.html" class="nav-menu-link current">📘 مقدمة: قصة البداية (Intro)</a>
+            </li>
+            <li class="nav-menu-item" style="transition-delay: 0.2s;">
+                <a href="text-retrieval.html" class="nav-menu-link">📗 Chapter 1: Text Retrieval</a>
+            </li>
+            <li class="nav-menu-item" style="transition-delay: 0.3s;">
+                <a href="boolean-retrieval.html" class="nav-menu-link">📙 Chapter 2: Boolean Retrieval</a>
+            </li>
+            <li class="nav-menu-item" style="transition-delay: 0.4s;">
+                <a href="#" class="nav-menu-link" id="closeMenu" style="font-size: 1rem; color: #94a3b8;">إغلاق القائمة
+                    ✕</a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navOverlay = document.getElementById('navOverlay');
+        const closeMenu = document.getElementById('closeMenu');
+
+        function toggleMenu() {
+            const isActive = navOverlay.classList.toggle('active');
+            menuToggle.innerHTML = isActive ? '✕' : '☰';
+            document.body.style.overflow = isActive ? 'hidden' : '';
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleMenu();
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navOverlay.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>
