@@ -426,13 +426,25 @@
             background: rgba(30, 41, 59, 0.95);
             width: 400px;
             height: 100%;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
             border-left: 1px solid rgba(255, 255, 255, 0.1);
             transform: translateX(100%);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) transparent;
+        }
+
+        .nav-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .nav-content::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
         }
 
         .nav-overlay.active .nav-content {
@@ -1300,6 +1312,10 @@
                 <a href="phrase-queries.html" class="modern-nav-link">
                     <span class="nav-icon">🧩</span>
                     <span>Phrase Queries & Positional Indexes</span>
+                </a>
+                <a href="skiplist.html" class="modern-nav-link">
+                    <span class="nav-icon">⚡</span>
+                    <span>Skip Lists</span>
                 </a>
             </div>
 
