@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1100">
+    <title>Text Operations | Complete Study Guide</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --accent: #facc15;
+            --border-color: rgba(51, 65, 85, 0.5);
+            --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        @media print {
+
+            html,
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            main {
+                width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .content-card {
+                break-inside: avoid;
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+            }
+
+            .top-nav,
+            .nav-overlay {
+                display: none !important;
+            }
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.05) 0px, transparent 50%);
+            color: var(--text-main);
+            font-family: 'Cairo', 'Inter', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-attachment: fixed;
+        }
+
+        main {
+            padding: 4rem 0;
+            width: 1100px;
+            margin: 0 auto;
+        }
+
+        .content-wrapper {
+            width: 1050px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 5rem;
+            padding-bottom: 3rem;
+            border-bottom: 2px solid var(--border-color);
+            text-align: right;
+            position: relative;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 150px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        header h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 0;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            padding: 4rem;
+            border-radius: 40px;
+            box-shadow: var(--shadow-premium);
+            margin-bottom: 6rem;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 4rem;
+            font-size: 2.8rem;
+            font-weight: 900;
+            border-right: 10px solid var(--primary);
+            padding-right: 2.5rem;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+        }
+
+        /* --- Point-by-Point Style --- */
+        .explanation-group {
+            margin-bottom: 3rem;
+            border-right: 1px solid var(--border-color);
+            padding-right: 1.5rem;
+        }
+
+        .en-point {
+            display: block;
+            color: var(--accent);
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            text-align: left;
+            direction: ltr;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .ar-explanation {
+            display: block;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 1.25rem;
+            text-align: right;
+            direction: rtl;
+            line-height: 1.9;
+            padding-top: 0.5rem;
+        }
+
+        .ar-explanation b {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .sub-points {
+            margin-top: 0.5rem;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border-color);
+            margin-left: 0.5rem;
+        }
+
+        .badge {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--primary);
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.9em;
+            margin: 0 4px;
+        }
+
+        .author-line {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 0.6rem 1.5rem;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            direction: ltr;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 1.5rem;
+        }
+
+        .author-line strong {
+            color: var(--accent);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        /* Modern Navigation Overlay */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(15px);
+            z-index: 10000;
+            display: none;
+            justify-content: flex-end;
+            /* Sidebar style */
+            align-items: stretch;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .nav-content {
+            background: rgba(30, 41, 59, 0.95);
+            width: 400px;
+            height: 100%;
+            padding: 2rem;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-overlay.active .nav-content {
+            transform: translateX(0);
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .close-btn:hover {
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modern-nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .modern-nav-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .modern-nav-link.active {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            border-color: rgba(56, 189, 248, 0.2);
+            font-weight: 700;
+        }
+
+        .nav-icon {
+            margin-left: 1rem;
+            /* RTL */
+            font-size: 1.4rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        /* Top Nav Trigger */
+        .top-nav {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+
+        .menu-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--primary);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-btn:hover {
+            background: rgba(56, 189, 248, 0.2);
+            transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 768px) {
+            .top-nav {
+                right: 10px;
+                top: 10px;
+            }
+
+            .nav-content {
+                width: 85%;
+            }
+        }
+
+        @media print {
+
+            .top-nav,
+            .nav-overlay {
+                display: none !important;
+            }
+        }
+    </style>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="top-nav">
+        <button class="menu-btn" id="menuBtn">☰ القائمة</button>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay">
+        <div class="nav-content">
+            <div class="nav-header">
+                <h2 class="nav-title">الفهرس</h2>
+                <button class="close-btn" id="closeBtn">✕</button>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html" class="modern-nav-link">
+                    <span class="nav-icon">🏠</span>
+                    <span>قصة البداية (Intro)</span>
+                </a>
+                <a href="text-retrieval.html" class="modern-nav-link">
+                    <span class="nav-icon">📄</span>
+                    <span>Text Retrieval</span>
+                </a>
+                <a href="boolean-retrieval.html" class="modern-nav-link">
+                    <span class="nav-icon">🔍</span>
+                    <span>Boolean Retrieval</span>
+                </a>
+                <a href="text-operations.html" class="modern-nav-link active">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Text Operations</span>
+                </a>
+                <a href="phrase-queries.html" class="modern-nav-link">
+                    <span class="nav-icon">🧩</span>
+                    <span>Phrase Queries & Positional Indexes</span>
+                </a>
+            </div>
+
+            <div
+                style="margin-top: auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; opacity: 0.5;">
+                <small>© 2026 Study Guide</small>
+            </div>
+        </div>
+    </div>
+
+
+
+    <main>
+        <div class="content-wrapper">
+            <header>
+                <h1>Text Operations</h1>
+                <div class="author-line">
+                    by <strong>Mohammad Qudah</strong>
+                </div>
+            </header>
+
+            <article>
+
+                <!-- Section 1: Pipeline -->
+                <div class="content-card">
+                    <h2 class="section-title">The Indexing Pipeline</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-point">Documents to be indexed ➔ Tokenizer ➔ Linguistic Modules ➔ Indexer ➔
+                            Inverted Index</span>
+                        <span class="ar-explanation">
+                            هاض هو "خط الإنتاج" الأساسي لأي محرك بحث. بيبدأ بالمواد الخام وهي الـ <b>Documents</b>،
+                            بعدين بتمر على العمليات التالية:
+                        </span>
+                        <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                            <li style="margin-bottom: 1rem;">
+                                <b>Tokenizer:</b> "المشرط" اللي بقطع الجمل لكلمات (Tokens).
+                                <br><span class="badge">Friends, Romans, countrymen. ➔ Friends, Romans,
+                                    countrymen</span>
+                            </li>
+                            <li style="margin-bottom: 1rem;">
+                                <b>Linguistic modules:</b> المرحلة اللي بتعدل شكل الكلمات لأصولها (Modified tokens).
+                                <br><span class="badge">Friends, Romans, countrymen ➔ friend, roman, countryman</span>
+                            </li>
+                            <li>
+                                <b>Indexer:</b> اللي برتب المعلومات في الـ <b>Inverted Index</b> النهائي (الكلمة ومكان
+                                ظهورها في المستندات).
+                                <br><span class="badge">friend ➔ 2, 4</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 2: Parsing -->
+                <div class="content-card">
+                    <h2 class="section-title">Parsing: What is a Document?</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-point">Need to step back and ask: What format? What language? What character
+                            set?</span>
+                        <span class="ar-explanation">
+                            قبل ما نبدأ، لازم نسأل 3 أسئلة جوهرية عن المستند:
+                        </span>
+                        <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                            <li style="margin-bottom: 0.5rem;"><b>What format?</b> (pdf, word, excel, html?)</li>
+                            <li style="margin-bottom: 0.5rem;"><b>What language?</b> (أي لغة مكتوب فيها؟)</li>
+                            <li><b>What character set?</b> (CP1252, UTF-8, ...)</li>
+                        </ul>
+                        <span class="ar-explanation" style="margin-top: 1rem; display: block;">
+                            تحديد هالمعلومات هو <b>Classification problem</b> (مشكلة تصنيف)؛ السيستم لازم يحزر النوع
+                            بناءً على "بصمات" الملف.
+                        </span>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="background: rgba(250, 204, 21, 0.05); padding: 1.5rem; border-radius: 15px; border: 1px dashed var(--accent);">
+                        <span class="en-point" style="color: var(--accent);">Complications: Format/language</span>
+                        <span class="ar-explanation">
+                            الموضوع مش دايماً سهل، فيه تعقيدات زي:
+                        </span>
+                        <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: circle;">
+                            <li style="margin-bottom: 0.5rem;"><b>Multi-language single index:</b> الفهرس الواحد ممكن
+                                يحتوي كلمات من لغات كثيرة.</li>
+                            <li style="margin-bottom: 0.5rem;"><b>Mixed content:</b> إيميل فرنسي ومعه مرفق ألماني
+                                (German pdf attachment).</li>
+                            <li><b>Quoted content:</b> إيميل فرنسي بقتبس فقرات من عقد إنجليزي (English-language
+                                contract).</li>
+                        </ul>
+                        <span class="ar-explanation" style="margin-top: 1rem; display: block;">
+                            عشان هيك فيه <b>Commercial and open source libraries</b> (مكتبات جاهزة) هي اللي بتتعامل مع
+                            هاد العجقة وبتحل المشاكل.
+                        </span>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-point">What is a unit document? Grain size is important.</span>
+                        <span class="ar-explanation">
+                            لازم نحدد الـ <b>Unit document</b> (وحدة المستند)؛ هاض الموضوع بنسميه <b>Grain size</b> (حجم
+                            الحبة)، وهو جداً مهم لأنه بحدد دقة النتائج. الدكتور حط تساؤلات مهمة عن "شو هو المستند" في
+                            الواقع:
+                        </span>
+                        <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                            <li style="margin-bottom: 0.5rem;"><b>A file?</b> (هل هو مجرد ملف؟)</li>
+                            <li style="margin-bottom: 0.5rem;"><b>An email?</b> (ممكن إيميل واحد من ضمن ملف mbox كبير
+                                بيحتوي آلاف الإيميلات).</li>
+                            <li style="margin-bottom: 0.5rem;"><b>What about an email with 5 attachments?</b> (لو فيه 5
+                                مرفقات، هل هم مستند واحد ولا كل مرفق لحال؟)</li>
+                            <li><b>A group of files?</b> (زي ملفات <b>PPT</b> أو <b>LaTeX</b> اللي ممكن تكون مقسمة على
+                                عدة صفحات HTML).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 3: Tokenization -->
+                <div class="content-card">
+                    <h2 class="section-title">Tokenization</h2>
+
+                    <div class="explanation-group" style="border-right-color: var(--accent);">
+                        <span class="en-point" style="color: var(--accent);">Input: "Friends, Romans and Countrymen" ➔
+                            Output: Tokens (Friends, Romans, Countrymen)</span>
+                        <span class="ar-explanation">
+                            الـ <b>Token</b> هو "مثيل لسلسلة من الحروف" (Instance of a sequence of characters). كل Token
+                            بطلع من هالمرحلة بصير <b>Candidate</b> (مرشح) ليدخل في الفهرس كـ Entry، بس طبعاً بعد مراحل
+                            معالجة ثانية (Further processing).
+                        </span>
+                        <span class="en-point" style="color: var(--accent); margin-top: 1rem; display: block;">But what
+                            are valid tokens to emit?</span>
+                    </div>
+
+                    <div class="explanation-group">
+                        <span class="en-point">Issues in tokenization: Finland's? Hewlett-Packard? San Francisco?</span>
+                        <span class="ar-explanation">
+                            هون بتبدأ المشاكل؛ طلع على هالأمثلة اللي بالسلايدات:
+                        </span>
+                        <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                            <li style="margin-bottom: 1rem;">
+                                <b>Finland's capital:</b> هل نفصلها لـ <span class="badge">Finland</span> و <span
+                                    class="badge">s</span>؟ ولا <span class="badge">Finlands</span>؟ ولا نتركها <span
+                                    class="badge">Finland's</span>؟
+                            </li>
+                            <li style="margin-bottom: 1rem;">
+                                <b>Hewlett-Packard:</b> هل نعتبرها Token واحد ولا ثنين؟
+                                <ul
+                                    style="list-style-type: circle; margin-top: 0.5rem; margin-right: 1.5rem; font-size: 0.95em;">
+                                    <li><span class="badge">state-of-the-art:</span> هل نكسر الشحطات اللي بينهم؟</li>
+                                    <li><span class="badge">co-education</span></li>
+                                    <li><span class="badge">lowercase</span> vs <span class="badge">lower-case</span> vs
+                                        <span class="badge">lower case</span>؟
+                                    </li>
+                                </ul>
+                                <p
+                                    style="margin-top: 0.8rem; font-style: italic; color: var(--text-muted); font-size: 0.9rem;">
+                                    * ملاحظة من السلايد: أحياناً بكون مفيد نخلي اليوزر هو اللي يحط الشحطات المتوقعة (Get
+                                    the user to put in possible hyphens).
+                                </p>
+                            </li>
+                            <li>
+                                <b>San Francisco:</b> مستند واحد ولا ثنين؟ وكيف بنقرر إنه مستند واحد (How do you decide
+                                it is one token)?
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="explanation-group" style="border-right-color: #f87171;">
+                        <span class="en-point">Numbers: 3/20/91, Mar. 12, 1991, 55 B.C., B-52, (800) 234-2333</span>
+                        <span class="ar-explanation">
+                            الأرقام والتواريخ بكل أشكالها بتمثل تحدي؛ الدكتور حط أمثلة متنوعة زي التواريخ المختصرة
+                            والطويلة، وحتى الـ <b>PGP keys</b> المعقدة زي <span class="badge">324a3df234cb23e</span>.
+                        </span>
+                        <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                            <li style="margin-bottom: 0.5rem;"><b>Often have embedded spaces:</b> أرقام التلفونات غالباً
+                                فيها فراغات بتلخبط الـ Tokenizer.</li>
+                            <li style="margin-bottom: 0.5rem;"><b>Older IR systems:</b> المحركات القديمة كانت تطنش
+                                الأرقام، بس اليوم هي <b>Very useful</b> (جداً مفيدة)؛ زي البحث عن "أكواد الأخطاء" (Error
+                                codes) أو الـ Stacktraces على الويب.</li>
+                            <li><b>Meta-data:</b> الأرقام غالباً بتتحول لـ <b>Meta-data</b> منفصلة، زي "تاريخ الإنشاء"
+                                (Creation date) أو "تنسيق الملف" (Format).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Tokenization: Language Issues -->
+                <div class="content-card">
+                    <h2 class="section-title">Tokenization: Language Issues</h2>
+
+                    <div class="explanation-group">
+                        <span class="en-point" style="color: var(--primary);">Chinese and Japanese: No spaces between
+                            words</span>
+                        <span class="ar-explanation">
+                            في الصينية واليابانية، الكلمات ملزقة ببعض وما فيه فراغات (No spaces):
+                            <br><span
+                                style="font-family: serif; font-size: 1.2rem; color: #cbd5e1; margin: 10px 0; display: block; text-align: left; direction: ltr;">莎拉波娃现在居住在美国东南部的佛罗里达。</span>
+                            هاض الاشي معناه إنه <b>Not always guaranteed a unique tokenization</b> (مش دايماً التقطيع
+                            بكون وحيد أو مؤكد)، ممكن كلمة تنفهم بطريقتين مختلفتين تماماً.
+                        </span>
+                    </div>
+
+                    <div class="explanation-group"
+                        style="border-right: 4px solid var(--primary); padding-right: 1.5rem;">
+                        <span class="en-point" style="color: var(--primary);">Arabic Issues: Bi-directional &
+                            Ligatures</span>
+                        <span class="ar-explanation">
+                            لغتنا العربية فيها "أفلام" خاصة فيها ذكرها الدكتور:
+                        </span>
+                        <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                            <li style="margin-bottom: 1rem;">
+                                <b>Bi-directional (BiDi):</b> العربي ببدأ من اليمين لليسار، بس لما يدخل رقم (زي 1962)
+                                بقلب الترتيب من اليسار لليمين.
+                            </li>
+                            <li style="margin-bottom: 1rem;">
+                                <b>Complex Ligatures:</b> الحروف عندنا بتغير شكلها وبتشبك ببعض (تشبيك الحروف)، وهاد بعمل
+                                تعقيد في معالجة شكل الكلمة.
+                            </li>
+                            <li>
+                                <b>Unicode vs Stored form:</b> بالرغم من إن العرض على الشاشة (Surface presentation) معقد
+                                بسبب الـ Unicode، إلا إن طريقة التخزين في السيرفرات (Stored form) بتكون
+                                <b>Straightforward</b> (بسيطة ومباشرة).
+                            </li>
+                        </ul>
+                        <div
+                            style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; margin-top: 1rem; direction: ltr; text-align: left;">
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.5rem;">Slide Example:</p>
+                            <p style="color: #fff; line-height: 1.4;">استقلت الجزائر في سنة 1962 بعد 132 عاماً من
+                                الاحتلال الفرنسي.</p>
+                            <p style="color: var(--accent); font-style: italic; font-size: 0.9rem; margin-top: 0.5rem;">
+                                'Algeria achieved its independence in 1962 after 132 years of French occupation.'</p>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+        <!-- Section 5: Stop Words -->
+        <div class="content-card">
+            <h2 class="section-title">Stop Words</h2>
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">With a stop list, you exclude from the dictionary
+                    entirely the commonest words. Intuition:</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li style="margin-bottom: 0.5rem;"><b>They have little semantic content:</b> كلمات زي <span
+                            class="badge">the, a, and, to, be</span> ما بتعطي معنى فريد للمستند.</li>
+                    <li><b>There are a lot of them:</b> هدول الكلمات بياخدوا مساحة خرافية؛ تقريباً <b>~30% of
+                            postings</b> لأول 30 كلمة شائعة!</li>
+                </ul>
+            </div>
+
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">But the trend is away from doing this:</span>
+                <span class="ar-explanation">
+                    اليوم، التوجه هو "الابتعاد" عن حذف كلمات الوقف، والسبب هو تطور التقنيات:
+                </span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: circle;">
+                    <li style="margin-bottom: 0.5rem;"><b>Good compression techniques:</b> طرق الضغط الحديثة بتخلي مساحة
+                        تخزينهم شبه معدومة.</li>
+                    <li><b>Good query optimization:</b> السيستم صار سريع كفاية إنه ما يتأثر بوجودهم وقت البحث.</li>
+                </ul>
+            </div>
+
+            <div class="explanation-group"
+                style="background: rgba(250, 204, 21, 0.05); padding: 1.5rem; border-radius: 15px; border: 1px dashed var(--accent);">
+                <span class="en-point" style="color: var(--accent);">You need them for:</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li style="margin-bottom: 0.8rem;"><b>Phrase queries:</b> زي <span class="badge">"King of
+                            Denmark"</span>، لو حذفت الـ "of" بضيع المعنى.</li>
+                    <li style="margin-bottom: 0.8rem;"><b>Various song titles, etc:</b> أغاني زي <span
+                            class="badge">"Let it be"</span> أو <span class="badge">"To be or not to be"</span>.</li>
+                    <li><b>"Relational" queries:</b> زي <span class="badge">"flights to London"</span>، حرف الـ "to" هون
+                        جوهري.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 6: Normalization to Terms (Equivalence) -->
+        <div class="content-card">
+            <h2 class="section-title">Normalization to Terms</h2>
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">We may need to "normalize" words in indexed text as
+                    well as query words into the same form.</span>
+                <span class="ar-explanation">
+                    لازم نوحد شكل الكلمة (Normalization) سواء كانت في الملفات أو في كلمة البحث، عشان نقدر نعمل
+                    <b>Match</b> صح. مثال: بدنا <span class="badge">U.S.A.</span> والـ <span class="badge">USA</span>
+                    يتطابقوا.
+                </span>
+            </div>
+
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">Result is terms: a term is a (normalized) word
+                    type, which is an entry in our IR system dictionary.</span>
+                <span class="ar-explanation">
+                    الـ <b>Term</b> هو النتيجة النهائية بعد التوحيد، وهو اللي بنخزنه فعلياً في "قاموس" نظام الاسترجاع.
+                </span>
+            </div>
+
+            <div class="explanation-group" style="border-right-color: var(--primary);">
+                <span class="en-point" style="color: var(--accent);">We most commonly implicitly define equivalence
+                    classes of terms by, e.g.,</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li style="margin-bottom: 1rem;">
+                        <b>Deleting periods to form a term:</b> حذف النقاط.
+                        <br><span class="badge">U.S.A., USA ➔ USA</span>
+                    </li>
+                    <li>
+                        <b>Deleting hyphens to form a term:</b> حذف الشحطات.
+                        <br><span class="badge">anti-discriminatory, antidiscriminatory ➔ antidiscriminatory</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 7: Case Folding -->
+        <div class="content-card">
+            <h2 class="section-title">Case Folding</h2>
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">Reduce all letters to lower case</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li style="margin-bottom: 1rem;">
+                        <b>Exception: upper case in mid-sentence?</b> زي <span class="badge">General Motors</span>؛ لما
+                        الحروف الكبيرة تيجي بنص الجملة، هاض دليل إنها اسم علم.
+                    </li>
+                    <li>
+                        <b>Policy:</b> الأفضل تحول كل شي لـ lowercase لأن اليوزرز غالباً بكتبوا بحثهم بالـ small بغض
+                        النظر عن القواعد الصحيحة.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="explanation-group"
+                style="background: rgba(56, 189, 248, 0.05); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary);">
+                <span class="en-point" style="color: var(--primary);">Longstanding Google example:</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: none;">
+                    <li><b>Query:</b> <span class="badge">C.A.T.</span></li>
+                    <li><b>#1 result is for "cat" not Caterpillar Inc.</b></li>
+                </ul>
+                <span class="ar-explanation" style="margin-top: 1rem; display: block;">
+                    هاض المثال بوجيك كيف التوحيد العنيف في جوجل خلى السيستم يغلط ويفهم إنك بتبحث عن "بسه" وإنت قاصد شركة
+                    المعدات الشهيرة.
+                </span>
+            </div>
+        </div>
+
+        <!-- Section 8: Normalization to Terms (Expansion) -->
+        <div class="content-card">
+            <h2 class="section-title">Normalization to Terms (Alternative)</h2>
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">An alternative to equivalence classing is to do
+                    expansion</span>
+                <span class="ar-explanation">
+                    بدل ما نوحد الكلمات وقت التخزين، ممكن نعمل <b>Expansion</b> (توسعة) وقت البحث. يعني السيستم ببحث عن
+                    الكلمة وكل "قرايبها" في نفس الوقت.
+                </span>
+            </div>
+
+            <div class="explanation-group"
+                style="background: rgba(250, 204, 21, 0.05); border: 2px dashed var(--accent); padding: 2rem; border-radius: 20px;">
+                <span class="en-point" style="color: var(--accent);">An example of where this may be useful:</span>
+                <ul class="ar-explanation"
+                    style="margin-right: 2rem; list-style-type: none; font-family: 'Inter', sans-serif;">
+                    <li style="margin-bottom: 0.5rem;"><b>Enter: window</b> ➔ <b>Search:</b> <span class="badge">window,
+                            windows</span></li>
+                    <li style="margin-bottom: 0.5rem;"><b>Enter: windows</b> ➔ <b>Search:</b> <span
+                            class="badge">Windows, windows, window</span></li>
+                    <li><b>Enter: Windows</b> ➔ <b>Search:</b> <span class="badge">Windows</span></li>
+                </ul>
+            </div>
+
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">Potentially more powerful, but less
+                    efficient</span>
+                <span class="ar-explanation">
+                    هاد الأسلوب <b>More powerful</b> لأنه أدق وبفهم نية اليوزر (زي مثال ويندوز نظام التشغيل)، بس هو
+                    <b>Less efficient</b> لأنه بخلي السيستم ينفذ عمليات بحث أكثر في نفس اللحظة.
+                </span>
+            </div>
+        </div>
+
+        <!-- Section 9: Thesauri (Synonyms & Homonyms) -->
+        <div class="content-card">
+            <h2 class="section-title">Thesauri</h2>
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">Do we handle synonyms and homonyms?</span>
+                <span class="ar-explanation">
+                    كيف السيستم بتعامل مع المترادفات؟ مثلاً بالاعتماد على <b>Hand-constructed equivalence classes</b>:
+                    <br><span class="badge">car = automobile</span> | <span class="badge">color = colour</span>
+                </span>
+            </div>
+
+            <div class="explanation-group"
+                style="background: rgba(56, 189, 248, 0.05); padding: 1.5rem; border-radius: 12px; border-right: 4px solid var(--primary);">
+                <span class="en-point" style="color: var(--primary);">Two ways to implement this:</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li style="margin-bottom: 1.5rem;">
+                        <b>1. Rewrite to form equivalence-class terms:</b>
+                        <br>التوحيد وقت التخزين؛ لو الجهاز لقى <span class="badge">automobile</span>، بخزنها بالفهرس تحت
+                        المصطلح المشترك <span class="badge">car-automobile</span>.
+                    </li>
+                    <li>
+                        <b>2. Or we can expand a query:</b>
+                        <br>التوحيد وقت البحث؛ لو اليوزر كتب <span class="badge">automobile</span>، السيستم ببحث
+                        تلقائياً عن <span class="badge">car</span> كمان.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 10: Lemmatization -->
+        <div class="content-card">
+            <h2 class="section-title">Lemmatization</h2>
+
+            <div class="explanation-group">
+                <span class="en-point">Reduce inflectional/variant forms to base form</span>
+                <span class="ar-explanation">
+                    الهدف الأساسي من الـ <b>Lemmatization</b> هو تقليل التصريفات والأشكال المختلفة للكلمة
+                    (Inflectional forms) وترجيعها لشكلها الأساسي.
+                </span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li style="margin-bottom: 0.5rem;"><span class="badge">am, are, is ➔ be</span></li>
+                    <li><span class="badge">car, cars, car's, cars' ➔ car</span> (توحيد المفرد والجمع
+                        والملكية)</li>
+                </ul>
+            </div>
+
+            <div class="explanation-group"
+                style="background: rgba(56, 189, 248, 0.05); padding: 1.5rem; border-radius: 15px;">
+                <span class="en-point" style="color: var(--primary);">Example sentence
+                    transformation:</span>
+                <div style="font-family: 'Courier New', monospace; margin: 1rem 0; color: #fff;">
+                    <p style="color: #94a3b8;">Original: the boy's cars are different colors</p>
+                    <p style="color: var(--accent); font-weight: bold;">➔ Normalized: the boy car be
+                        different color</p>
+                </div>
+                <span class="ar-explanation">
+                    هاض المثال بوجيك كيف الجملة صارت "مفككة" لأصولها؛ الـ Lemmatizer بشتغل "صح" (Proper
+                    reduction) وبرجع الكلمة لشكلها اللي في القاموس (Dictionary headword form) بناءً على
+                    تحليل لغوي دقيق.
+                </span>
+            </div>
+        </div>
+
+        <!-- Section 10: Lemmatization -->
+        <div class="content-card">
+            <h2 class="section-title">Section 10: Lemmatization</h2>
+
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">Reduce inflectional/variant forms to base
+                    form</span>
+                <span class="ar-explanation">
+                    الهدف الأساسي من الـ <b>Lemmatization</b> هو تقليل التصريفات والأشكال المختلفة للكلمة
+                    (Inflectional forms) وترجيعها لشكلها الأساسي.
+                </span>
+            </div>
+
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">E.g.,</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li style="margin-bottom: 0.5rem;"><span class="badge">am, are, is ➔ be</span></li>
+                    <li><span class="badge">car, cars, car's, cars' ➔ car</span></li>
+                </ul>
+            </div>
+
+            <div class="explanation-group"
+                style="background: rgba(56, 189, 248, 0.05); padding: 1.5rem; border-radius: 15px;">
+                <span class="en-point" style="color: var(--primary);">the boy's cars are different colors ➔ the boy car
+                    be different color</span>
+                <span class="ar-explanation" style="margin-top: 1rem; display: block;">
+                    هاض المثال بوجيك كيف الجملة صارت "مفككة" لأصولها؛ الـ Lemmatizer بشتغل "صح" وبرجع الكلمة لشكلها اللي
+                    في القاموس.
+                </span>
+            </div>
+
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">Lemmatization implies doing "proper" reduction to
+                    dictionary headword form</span>
+                <span class="ar-explanation">
+                    الـ Lemmatization بتعني إنك تعمل تقليل "صحيح" (Proper reduction) للكلمة عشان ترجعها لأصلها المعجمي
+                    (Dictionary headword).
+                </span>
+            </div>
+        </div>
+
+        <!-- Section 11: Stemming -->
+        <div class="content-card">
+            <h2 class="section-title">Section 11: Stemming</h2>
+
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">Reduce terms to their "roots" before
+                    indexing</span>
+                <span class="ar-explanation">
+                    الـ <b>Stemming</b> هو تخفيف الكلمات لجذورها (Roots) قبل ما نفهرسها.
+                </span>
+            </div>
+
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">"Stemming" suggests crude affix chopping</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li style="margin-bottom: 0.5rem;"><b>language dependent:</b> بيعتمد عاللغة.</li>
+                    <li><b>e.g., automate(s), automatic, automation all reduced to automat.</b></li>
+                </ul>
+                <span class="ar-explanation" style="margin-top: 1rem; display: block;">
+                    كلمة Stemming بتوحي بالقص "الخشن" (Crude affix chopping) للزوايد.
+                </span>
+            </div>
+
+            <div class="explanation-group"
+                style="display: flex; flex-direction: column; gap: 1rem; background: rgba(0,0,0,0.2); padding: 2rem; border-radius: 20px;">
+                <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; direction: ltr;">
+                    <div
+                        style="flex: 1; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); border-radius: 12px; font-size: 0.95rem; line-height: 1.6;">
+                        for example <b>compressed</b> and <b>compression</b> are both accepted as equivalent to
+                        <b>compress</b>.
+                    </div>
+                    <div style="font-size: 1.8rem; color: var(--accent); flex-shrink: 0;">➔</div>
+                    <div
+                        style="flex: 1; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); border-radius: 12px; font-size: 0.95rem; font-style: italic; color: #bababa; line-height: 1.6;">
+                        for exampl <b>compress</b> and <b>compress</b> ar both accept as equival to <b>compress</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 12: Porter's Algorithm -->
+        <div class="content-card">
+            <h2 class="section-title">Section 12: Porter's Algorithm</h2>
+
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">Commonest algorithm for stemming English</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li><b>Results suggest it's at least as good as other stemming options</b></li>
+                </ul>
+                <span class="ar-explanation" style="margin-top: 1rem; display: block;">
+                    خوارزمية <b>Porter</b> هي الأكثر شيوعاً للإنجليزي، ونتائجها بتقول إنها "على الأقل" بجودة الخيارات
+                    الثانية.
+                </span>
+            </div>
+
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">Conventions + 5 phases of reductions</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li style="margin-bottom: 0.5rem;"><b>phases applied sequentially:</b> المراحل بتطبق ورا بعض
+                        بالترتيب.</li>
+                    <li><b>each phase consists of a set of commands:</b> كل مرحلة فيها مجموعة أوامر.</li>
+                </ul>
+            </div>
+
+            <div class="explanation-group"
+                style="background: rgba(250, 204, 21, 0.05); padding: 1.5rem; border-radius: 15px; border: 1px dashed var(--accent);">
+                <span class="en-point" style="color: var(--accent);">Typical rules in Porter:</span>
+                <ul class="ar-explanation"
+                    style="margin-right: 2rem; list-style-type: none; font-family: 'Courier New', monospace;">
+                    <li style="margin-bottom: 0.5rem;"><span class="badge">sses ➔ ss</span></li>
+                    <li style="margin-bottom: 0.5rem;"><span class="badge">ies ➔ i</span></li>
+                    <li style="margin-bottom: 0.5rem;"><span class="badge">ational ➔ ate</span></li>
+                    <li style="margin-bottom: 1rem;"><span class="badge">tional ➔ tion</span></li>
+                </ul>
+
+                <span class="en-point" style="color: var(--accent); margin-top: 1rem; display: block;">Weight of word
+                    sensitive rules</span>
+                <div style="font-family: 'Courier New', monospace; padding: 1rem; color: #fff;">
+                    EMENT ➔<br>
+                    &nbsp;&nbsp;<span class="badge">replacement ➔ replac</span><br>
+                    &nbsp;&nbsp;<span class="badge">cement ➔ cement</span>
+                </div>
+                <span class="ar-explanation">
+                    الوزن (Weight) بيفرق؛ كلمة Replacement طويلة فاختصرها، بس cement قصيرة فخلاها زي ما هي.
+                </span>
+            </div>
+        </div>
+
+        <!-- Section 13: Other Stemmers -->
+        <div class="content-card">
+            <h2 class="section-title">Section 13: Other Stemmers</h2>
+            <div class="explanation-group">
+                <span class="en-point" style="color: var(--accent);">Other stemmers exist:</span>
+                <ul class="ar-explanation" style="margin-right: 2rem; list-style-type: disc;">
+                    <li style="margin-bottom: 1.5rem;">
+                        <b>Lovins stemmer</b>
+                        <br><span
+                            style="font-size: 0.8rem; color: var(--primary);">http://www.comp.lancs.ac.uk/computing/research/stemming/general/lovins.htm</span>
+                        <br><b>Single-pass, longest suffix removal (about 250 rules)</b>
+                    </li>
+                    <li style="margin-bottom: 0.5rem;"><b>Paice/Husk stemmer</b></li>
+                    <li><b>Snowball</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 14: Does stemming help? -->
+        <div class="content-card">
+            <h2 class="section-title">Section 14: Does stemming help?</h2>
+
+            <div class="explanation-group">
+                <span class="en-point">English: very mixed results. Helps recall for some queries but harms
+                    precision on others</span>
+                <span class="ar-explanation">
+                    في الإنجليزي، النتائج <b>Mixed</b> (مختلطة)؛ الـ Stemming برفع الـ <b>Recall</b> (بخليك تلاقي
+                    ملفات أكثر) بس ممكن يضرب الـ <b>Precision</b> (الدقة بتقل).
+                </span>
+            </div>
+
+            <div class="explanation-group"
+                style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 1.5rem; border-radius: 12px;">
+                <span class="en-point" style="color: #f87171;">E.g., operative (dentistry) ➔ oper</span>
+                <span class="ar-explanation">
+                    مثلاً لو بحثت عن كلمة <span class="badge">operative</span> (بمعنى عملية أسنان)، والسيستم عملها
+                    Stemming لـ <span class="badge">oper</span>، ممكن تطلعلك نتائج عن "عمليات جراحية" عامة، وهيك
+                    الدقة بتضيع (Precision harms).
+                </span>
+            </div>
+
+            <div class="explanation-group">
+                <span class="en-point">Definitely useful for Spanish, German, ...</span>
+                <span class="ar-explanation">
+                    بس في لغات ثانية زي الإسبانية أو الألمانية، الـ Stemming هو إشي <b>Essential</b> (ضروري جداً)
+                    ومفيد بدون نقاش بسبب تعقيد تصريفات الكلمات عندهم.
+                </span>
+            </div>
+        </div>
+
+        <!-- Section 15: Language-specificity -->
+        <div class="content-card">
+            <h2 class="section-title">Section 15: Language-specificity</h2>
+
+            <div class="explanation-group">
+                <span class="en-point">The above methods embody transformations that are: Language-specific, and
+                    often Application-specific</span>
+                <span class="ar-explanation">
+                    كل الطرق اللي حكينا عنها (Tokenization, Normalization, Stemming) هي عمليات
+                    <b>Language-specific</b> (بتعتمد على اللغة)؛ يعني اللي بضبط للإنجليزي ما بضبط للعربي. وحتى
+                    أحياناً بتكون <b>Application-specific</b> (بتعتمد على نوع التطبيق أو المجال اللي بتشتغل فيه).
+                </span>
+            </div>
+
+            <div class="explanation-group">
+                <span class="en-point">Both open source and commercial plug-ins are available for handling
+                    these</span>
+                <span class="ar-explanation">
+                    عشان تريح راسك، فيه <b>Plug-ins</b> (إضافات) جاهزة؛ منها <b>Open source</b> (مفتوح المصدر) ومنها
+                    <b>Commercial</b> (تجارية بفلوس)، بتتعامل مع هاي التعقيدات وبتعطيك الـ Stemming والتوحيد المناسب
+                    لكل لغة.
+                </span>
+            </div>
+        </div>
+
+        </article>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 4rem;">
+            <a href="boolean-retrieval.html" class="nav-link"
+                style="font-size: 1.2rem; padding: 1rem 2rem; background: rgba(56, 189, 248, 0.1);">
+                ← Previous: Boolean Retrieval
+            </a>
+            <a href="phrase-queries.html" class="nav-link"
+                style="font-size: 1.2rem; padding: 1rem 2rem; background: var(--primary); color: #0f172a;">
+                Next: Phrase Queries →
+            </a>
+        </div>
+
+        <footer
+            style="text-align: center; color: var(--text-muted); padding: 5rem 0; border-top: 2px solid var(--border-color); margin-top: 5rem;">
+            © 2026 Mohammad Qudah - Advanced IR Guide
+        </footer>
+        </div>
+    </main>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navOverlay = document.getElementById('navOverlay');
+        const closeBtn = document.getElementById('closeBtn');
+
+        function toggleMenu() {
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navOverlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
+        if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+
+        // Close on click outside
+        navOverlay.addEventListener('click', (e) => {
+            if (e.target === navOverlay) toggleMenu();
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navOverlay.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>
