@@ -550,6 +550,85 @@
             }
         }
 
+        /* ====== Document / Slide Viewer Layout ====== */
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .content-card {
+            width: 100%;
+            margin: 20px auto;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        p,
+        .ar-text {
+            margin: 12px 0;
+            line-height: 1.8;
+        }
+
+        ul,
+        ol {
+            padding-inline-start: 24px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 16px auto;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                line-height: 1.75;
+            }
+
+            main {
+                padding: 1rem 0;
+            }
+
+            .content-wrapper {
+                padding: 0 12px;
+            }
+
+            .content-card {
+                padding: 1.5rem 1rem;
+                margin: 14px auto;
+                border-radius: 14px;
+            }
+
+            header {
+                padding: 1.5rem 0;
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .en-line {
+                font-size: 1.1rem;
+            }
+
+            .ar-text {
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .content-wrapper {
+                max-width: 900px;
+            }
+        }
+
         @media print {
 
             .top-nav,
